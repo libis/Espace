@@ -9,7 +9,7 @@
                 <p><span class='image-overlay-text'><?php echo $homepageText; ?></span></p>
                 <?php endif; ?>
             </div>
-            <h2 id="get_started">&#9755; Get Started Now</h2>
+            <h2 id="get_started">&#10146;   Get Started Now</h2>
         </div>
 
         <?php fire_plugin_hook('public_home', array('view' => $this)); ?>

@@ -1,144 +1,52 @@
 <?php
-$title = __('Browse Exhibits');
+$title = __('Browse Stories');
 echo head(array('title' => $title, 'bodyclass' => 'exhibits exhibits-browse'));
 ?>
-</div>
+
+<h1><?php echo $title; ?> <?php echo __('(%s total)', $total_results); ?></h1>
+<?php if (count($exhibits) > 0): ?>
+
+<nav class="navigation secondary-nav">
+    <?php echo nav(array(
+        array(
+            'label' => __('Browse All'),
+            'uri' => url('exhibits')
+        ),
+        array(
+            'label' => __('Browse by Tag'),
+            'uri' => url('exhibits/tags')
+        )
+    )); ?>
+</nav>
+
+<?php echo pagination_links(); ?>
+
+<?php $exhibitCount = 0; ?>
+<?php foreach (loop('exhibit') as $exhibit): ?>
+    <?php $exhibitCount++; ?>
+    <div class="exhibit <?php if ($exhibitCount%2==1) echo ' even'; else echo ' odd'; ?>">
+        <h2><?php echo link_to_exhibit(); ?></h2>
+        <?php if ($exhibitImage = record_image($exhibit, 'square_thumbnail')): ?>
+            <?php echo exhibit_builder_link_to_exhibit($exhibit, $exhibitImage, array('class' => 'image')); ?>
+        <?php endif; ?>
+        <?php if ($exhibitDescription = metadata('exhibit', 'description', array('no_escape' => true))): ?>
+        <div class="description"><?php echo $exhibitDescription; ?>
+         <?php echo exhibit_builder_link_to_exhibit($exhibit, 'Read more', array('class' => 'read-story')); ?></div>
+        <?php endif; ?>
+        <?php if ($exhibitTags = tag_string('exhibit', 'exhibits')): ?>
+        <p class="tags"><?php echo $exhibitTags; ?></p>
+        <?php endif; ?>
+       
+    </div>
+<?php endforeach; ?>
+
+<?php echo pagination_links(); ?>
+
+<?php else: ?>
+<p><?php echo __('There are no exhibits available yet.'); ?></p>
+<?php endif; ?>
 
 
-<div id="search-container">
-    <h1><?php echo $title; ?> <?php echo __('(%s total)', $total_results); ?></h1>
-    <div id="filters" class="button-group">
-  <button data-filter="*">show all</button>
-  <button data-filter=".new">new</button>
-  <button data-filter=".popular">popular</button>
-  <button data-filter=".featured">featured</button>
-</div>
-    <?php if (get_theme_option('use_advanced_search') === null || get_theme_option('use_advanced_search')): ?>
-    <?php echo search_form(array('show_advanced' => true)); ?>
-    <?php else: ?>
-    <?php echo search_form(); ?>
-    <?php endif; ?>
-</div>
-<div id="container">
-        <div class="grid-sizer"></div>
-        <div class="gutter-sizer"></div>
-        
-        <div class="stamp story">
-            <p><img class="make-icon" src="<?php echo img('book-icon_white.png');?>"><br>Create your own story</p>
-        </div>
-        
-        <div class="story featured">            
-            <div class="images"><img src="http://www.photoconsortium.net/wp-content/uploads/2015/01/R8_M_742_103_MHF-474x284.jpg"></div>
-            <div class="words">
-                <h3>Maximus mi diam</h3>
-                <p>Suspendisse maximus mi diam, at posuere lacus dictum quis. Quisque consectetur orci felis, eu pretium lacus ornare eu. Curabitur non augue at ipsum lacinia lobortis sit amet ornare lorem.</p>
-            <div class="more">
-                    <a href="">read more</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="story">
-            
-           
-            <div class="images"><img src="http://sgdap.girona.cat/sdam/imatges/079240.jpg"></div>
-            <div class="words">
-                <h3>Maximus mi diam</h3>
-                <p>Suspendisse maximus mi diam, at posuere lacus dictum quis. Quisque consectetur orci felis, eu pretium lacus ornare eu. Curabitur non augue at ipsum lacinia lobortis sit amet ornare lorem.</p>
-            <div class="more">
-                    <a href="">read more</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="story">              
-            <div class="images"><img src="http://resolver.lias.be/get_pid?stream&usagetype=THUMBNAIL&pid=849766"></div>
-            <div class="words">
-                <h3>Maximus mi diam</h3>
-                <p>Suspendisse maximus mi diam, at posuere lacus dictum quis. Quisque consectetur orci felis, eu pretium lacus ornare eu. Curabitur non augue at ipsum lacinia lobortis sit amet ornare lorem.</p>
-            <div class="more">
-                    <a href="">read more</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="story featured">               
-            <div class="images"><img src="http://www.musei.uniroma1.it/dbinfo/RMSMUS06/JPEG/V.O.114.jpg"></div>
-            <div class="words">
-                <h3>Maximus mi diam</h3>
-                <p>Suspendisse maximus mi diam, at posuere lacus dictum quis. Quisque consectetur orci felis, eu pretium lacus ornare eu. Curabitur non augue at ipsum lacinia lobortis sit amet ornare lorem.</p>
-            <div class="more">
-                    <a href="">read more</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="story new popular">               
-            <div class="images"><img src="http://europeana.parisiennedephotographie.fr/SSEU/Files/8580ab52844c0d0a8d2d5935d639615d5ad8607ff2e97be1d5b145ebbf6ff037"></div>
-            <div class="words">
-                <h3>Maximus mi diam</h3>
-                <p>Suspendisse maximus mi diam, at posuere lacus dictum quis. Quisque consectetur orci felis, eu pretium lacus ornare eu. Curabitur non augue at ipsum lacinia lobortis sit amet ornare lorem.</p>
-            <div class="more">
-                    <a href="">read more</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="story popular">               
-            <div class="images"><img src="http://www.photoconsortium.net/wp-content/uploads/2015/01/Digital-Gallery.-Promoter-srl-843-694x416.jpg"></div>
-            <div class="words">
-                <h3>Maximus mi diam</h3>
-                <p>Suspendisse maximus mi diam, at posuere lacus dictum quis. Quisque consectetur orci felis, eu pretium lacus ornare eu. Curabitur non augue at ipsum lacinia lobortis sit amet ornare lorem.</p>
-            <div class="more">
-                    <a href="">read more</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="story">               
-            <div class="images"><img src="http://sgdap.girona.cat/sdam/imatges/066731.jpg"></div>
-            <div class="words">
-                <h3>Maximus mi diam</h3>
-                <p>Suspendisse maximus mi diam, at posuere lacus dictum quis. Quisque consectetur orci felis, eu pretium lacus ornare eu. Curabitur non augue at ipsum lacinia lobortis sit amet ornare lorem.</p>
-            <div class="more">
-                    <a href="">read more</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="story">               
-            <div class="images"><img src="http://sgdap.girona.cat/sdam/imatges/066579.jpg"></div>
-            <div class="words">
-                <h3>Maximus mi diam</h3>
-                <p>Suspendisse maximus mi diam, at posuere lacus dictum quis. Quisque consectetur orci felis, eu pretium lacus ornare eu. Curabitur non augue at ipsum lacinia lobortis sit amet ornare lorem.</p>
-                <div class="more">
-                    <a href="">read more</a>
-                </div>
-            </div>            
-        </div>
-        
-</div>
-
-<script>
-    jQuery( document ).ready(function() {
-        var $container = jQuery('#container').imagesLoaded( function() {
-        // initialize
-            $container.isotope({
-              itemSelector: '.story',
-              masonry:{
-                   columnWidth: $container.find('.grid-sizer')[0],
-                   "gutter": $container.find('.gutter-sizer')[0]
-              }
-
-            });
-            jQuery('#filters').on( 'click', 'button', function() {
-                var filterValue = jQuery(this).attr('data-filter');
-                $container.isotope({ filter: filterValue });
-              });
-        });
-    });
-
-</script>
 
 
 <?php echo foot(); ?>
