@@ -516,6 +516,17 @@ header ul {
 
 footer {
     clear: both;
+    background:#fff;
+    border-top:1px solid #eee;
+    overflow:auto;
+    padding: 20px 0;
+}
+
+#footer_images img {
+    
+    height: 60px;
+    padding-bottom: 20px;
+    padding-right: 20px;
 }
 
 #site-title {
