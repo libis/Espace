@@ -516,12 +516,9 @@ header ul {
 
 footer {
     clear: both;
-    background:#fff;
     border-top:1px solid #eee;
-    overflow:auto;
-    padding: 20px 0;
 }
-
+#footer_images{margin:20px;}
 #footer_images img {
     
     height: 60px;

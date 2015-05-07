@@ -23,6 +23,7 @@ body {
   color: #333;
   background: #efefef;
   background: url("../images/squairy_light.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+  height:100%;
 }
 
 form, fieldset {
@@ -550,7 +551,6 @@ button {
 /* @group ----- Global selectors ----- */
 #content {
   overflow: hidden;
-  border: 1px solid #ccc;
   background: #fff;
   position: relative;
   margin: 0 auto 0 auto;
@@ -1441,15 +1441,8 @@ footer {
   margin: 0 auto;
   padding: 0;
   width: 960px;
-  overflow: hidden;
+  overflow: auto;
   margin-top: 1.5em;
-}
-footer:after {
-  content: "\0020";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
 }
 @media only screen and (min-width: 768px) and (max-width: 959px) {
   footer {
@@ -1944,20 +1937,29 @@ a:hover
 {
 	color: #FF4D4D;
 }
-footer
-{
+footer{
     border-top:1px solid #ccc;
     background: #fff;
-    padding:20px 0;
-	margin-top: 0;
-	width: 100%;
+    padding:20px 0px;
+    margin-top: 0;
+    display:block;
+	
 }
+#home footer
+{
+    width: 100%;
+    padding:10px 0;
+}
+
+
 #footer_images{
+    box-sizing: content-box;
+    padding:0 20px;
 }
 #footer_images img{
-    height:80px;
+    height:60px;
     padding-right:20px;
-    padding-bottom:20px;
+    
 }
 
 #footer-content
@@ -1996,14 +1998,7 @@ footer
 {
 	float: left;
 }
-footer
-{
-	
-}
-#content
-{
-	border: none;
-}
+
 #home #primary
 {
 	padding-right: 0;
@@ -2153,10 +2148,7 @@ div#header-image-holder .held
 	width: 5000px;
 	z-index: 9999;
 }
-#content
-{
-	overflow: visible;
-}
+
 html, body
 {
 	overflow-x: hidden;
