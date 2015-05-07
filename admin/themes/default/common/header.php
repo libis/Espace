@@ -24,6 +24,11 @@
     queue_js_file('vendor/selectivizr', 'javascripts', array('conditional' => '(gte IE 6)&(lte IE 8)'));
     queue_js_file('globals');
 ?>
+    
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,300italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Vollkorn:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
+
 
 <!-- Plugin Stuff -->
 <?php fire_plugin_hook('admin_head', array('view'=>$this)); ?>
@@ -37,12 +42,19 @@
 </head>
 
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
-
-<header>
+<a href="#content" id="skipnav"><?php echo __('Skip to main content'); ?></a>
+<header role="banner">
     <div class="container">
-        <div id="site-title" class="two columns">
+        <!--<div id="site-title" class="two columns">
             <?php echo link_to_home_page(option('site_title'), array('target' => '_blank')); ?>
-        </div>
+        </div>-->
+        <div id="site-title"><?php echo link_to_home_page(theme_logo()); ?></div>
+            <div id="primary-nav">
+            <?php
+                 echo public_nav_main();
+            ?>
+           
+            </div>
 
         <nav>
             <?php echo common('global-nav'); ?>
@@ -69,10 +81,10 @@
     <?php echo common('content-nav', array('title' => $title)); ?>
 
     <div class="subhead">
-        <?php echo search_form(array('show_advanced' => true)); ?>
+        <?php echo search_form(array('show_advanced' => true, 'form_attributes'=> array('role'=>'search'))); ?>
         <?php if (isset($title)) : ?>
-            <h1 class="section-title" title="<?php echo html_escape($title); ?>"><?php echo $title ?></h1>
+            <h1 id="content-heading" class="section-title" title="<?php echo $title; ?>"><?php echo $title ?></h1>
         <?php endif; ?>
     </div>
 
-    <div id="content" class="ten columns offset-by-two omega">
+    <div id="content" class="ten columns offset-by-two omega" role="main" aria-labelledby="content-heading">

@@ -1,8 +1,8 @@
 #exhibits-breadcrumb {
-    padding: .5em;
-    background-color: #fbfbf9;
-    border-bottom: 1px solid #E7E7E7;
-    margin: -20px -10px 20px -10px;
+   
+    margin: -10px 0px 20px 0px;
+    font-style:italic;
+    font-size:0.8em;
 }
 
 .instructions {
