@@ -57,10 +57,6 @@
                         'uri' => admin_url('/users/edit/'.$user->id)
                     ),
                     array(
-                        'label' => __('Omeka Admin'),
-                        'uri' => admin_url('/')
-                    ),
-                    array(
                         'label' => __('Log Out'),
                         'uri' => url('/users/logout')
                     )
