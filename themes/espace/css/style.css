@@ -560,9 +560,6 @@ button {
   z-index: 0;
 }
 
-.exhibits-browse #content{
-    padding:0;
-}
 
 .exhibits-browse #browse-stories{
     background:#fff;
@@ -809,45 +806,8 @@ button {
     vertical-align:text-bottom;
 }
 
-#featured-item,
-#featured-collection,
-#featured-exhibit {
-  overflow: hidden;
-  background: #eee;
-  padding: 1.5em 20px;
-  margin-bottom: 1.5em;
-}
-#featured-item h2,
-#featured-collection h2,
-#featured-exhibit h2 {
-  margin: 0;
-}
-#featured-item h3,
-#featured-collection h3,
-#featured-exhibit h3 {
-  margin: 0 0 1em;
-}
-#featured-item img,
-#featured-collection img,
-#featured-exhibit img {
-  float: left;
-  border: 1px solid #ccc;
-  padding: 2px;
-  height: 10.5em;
-  width: auto;
-  background-color: #fff;
-}
-
-#recent-items .item {
-  overflow: hidden;
-  border-bottom: 1px solid #ccc;
-  margin-bottom: 1.5em;
-}
-#recent-items .item .image {
-  height: 6em;
-}
-#recent-items .item h3 {
-  margin-top: 0;
+#login-form .field:last-child{
+    display:none;
 }
 
 .view-items-link {
@@ -1300,6 +1260,17 @@ ul.title-list {
   border-top-style: solid;
   padding-top: 1.41667em;
   margin-top: 0.75em;
+}
+
+.read-story{
+    border:2px solid #FF4D4D;
+    padding:2px 5px;
+    font-style:italic;
+    float:right;
+}
+
+.exhibits-browse .exhibit h2 a{
+    text-decoration:underline;
 }
 
 .browse .collection h2,
@@ -2060,7 +2031,7 @@ div#header-image-container h2
 	display: inline-block;
 	line-height: 32px;
 	margin-bottom: 20px;
-	padding: 5px 5px;
+	padding: 10px;
 	text-transform: uppercase;
         font-family: 'Lato', sans-serif;
         font-weight:300;
@@ -2088,7 +2059,6 @@ h2#get_started {
     margin-top:20px;
     background:none;
     font-style:italic;
-    text-decoration:underline;
 }
 
 #simple-pages-breadcrumbs{
