@@ -247,7 +247,13 @@ header:after {
   padding:15px 20px;
   border-bottom:1px solid #FFF;
   border-top:1px solid #FFF;
+  overflow:auto;
 }
+
+#browse-stories a{
+    color:#fff;
+}
+
 #browse-stories input[type=text], #browse-stories button { 
   height: 30px;
 }
@@ -269,7 +275,7 @@ button {
 
 #filters{
     float:left;
-    margin-right:40px;
+    margin-right:30px;
 }
 
 .filter-stories{
@@ -279,6 +285,17 @@ button {
     text-decoration:underline;
     font-size:1.3em;
     padding-right:10px;
+}
+
+#browse-stories #search-form{
+    
+    float:left;
+}
+
+.browse-all-stories{
+    float:left;
+    margin-left:30px;
+    margin-top:4px;
 }
 
 
@@ -1938,7 +1955,7 @@ a:hover
 	color: #FF4D4D;
 }
 footer{
-    border-top:1px solid #ccc;
+    border-top:1px solid #eee;
     background: #fff;
     padding:20px 0px;
     margin-top: 0;
@@ -2024,24 +2041,22 @@ div#header-image-container h2
         font-size:25px;
 	color: #FF4D4D;
 	display: inline-block;
-	line-height: 32px;
-	margin-bottom: 20px;
+	line-height: 27px;
+	margin:0 0 0px 0;
 	padding: 10px;
 	text-transform: uppercase;
         font-family: 'Lato', sans-serif;
         font-weight:300;
 }
 
-div#homepageText
-{
+div#homepageText{
 	color:#FFF;	
         font-size:24px;
         font-family:'Vollkorn',sans-serif;
-        padding:20px;
-        margin: 0 50px;
-        border:1px dashed #fff;
-        
-        
+        padding: 20px 20px;
+        border:1px solid #fff;
+        text-align:justify;
+        font-style:italic;
 }
 
 div#homepageText p{

@@ -23,21 +23,20 @@
 </div><!-- end content -->
 
 
-<div id="browse-stories">
-  
+<div id="browse-stories">  
   <div id="filters" class="button-group">
-      <div class="filter-stories">browse stories &#9755;</div>
-  <button data-filter="*">show all</button>
-  <button data-filter=".new">new</button>
-  <button data-filter=".popular">popular</button>
-  <button data-filter=".featured">featured</button>
-</div>
-    <form id="search-form" method="get" action="" name="search-form">
-        <input id="query" type="text" placeholder="Type here and press Enter" title="Search" value="" name="query">
-        <input type="hidden" name="record_types[]" value="Exhibit">
-        <input type="hidden" name="query_type" value="exact_match">
-        <button id="submit_search" value="Search" type="submit" name="submit_search">Search</button>
-    </form>
+    <div class="filter-stories">filter stories &#9755;</div>  
+    <button data-filter=".new">new</button>
+    <button data-filter=".popular">popular</button>
+    <button data-filter=".featured">featured</button>
+  </div>
+  <form id="search-form" method="get" action="" name="search-form">
+    <input id="query" type="text" placeholder="Type here and press Enter" title="Search" value="" name="query">
+    <input type="hidden" name="record_types[]" value="Exhibit">
+    <input type="hidden" name="query_type" value="exact_match">
+    <button id="submit_search" value="Search" type="submit" name="submit_search">Search</button>
+  </form>
+    <div class="filter-stories browse-all-stories"><a href="<?php echo url('exhibits');?>">browse all stories</a></div>  
 </div>
 
 <?php $records = libis_search_exhibits($_GET);?>
