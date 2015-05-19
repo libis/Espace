@@ -274,7 +274,7 @@ class GuestUserPlugin extends Omeka_Plugin_AbstractPlugin
         /* Add profile link to the user's setting panel. */
         $userProfile = new UserProfilesPlugin();
         $urls = $userProfile->filterGuestUserLinks(null);
-        if(array_key_exists("UserProfiles", $urls)){
+        if(isset($urls) && array_key_exists("UserProfiles", $urls)){
             $userUrls = $urls["UserProfiles"];
             if(array_key_exists("uri", $userUrls))
                 $html .= "<li><a href='".$userUrls["uri"]."'>" . __("Profile") . "</a></li>";
