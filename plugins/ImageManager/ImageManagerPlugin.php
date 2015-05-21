@@ -36,11 +36,25 @@ class ImageManagerPlugin extends Omeka_Plugin_AbstractPlugin
      * Uninstall the plugin.
      */
     public function hookUninstall()
-    {        
-        
+    {
+        /* Remove options from database. */
+        $this->removePluginHideConfiguration();
     }
 
-
+    /**
+     * Remove show/hide plugin configurations.
+     */
+    public function removePluginHideConfiguration(){
+        $userRoles = get_user_roles();
+        $currentClass = get_class() ;
+        if(isset($userRoles, $currentClass)){
+            $pluginName = str_replace('plugin', '', strtolower($currentClass));
+            foreach($userRoles as $role){
+                $userKey = strtolower($pluginName."_".$role."_hide");
+                delete_option(strtolower($pluginName."_".$role."_hide"));
+            }
+        }
+    }
     /**
      * Add the translations.
      */
@@ -101,9 +115,17 @@ class ImageManagerPlugin extends Omeka_Plugin_AbstractPlugin
     /**
      * Set the options from the config form input.
      */
-    public function hookConfig()
+    public function hookConfig($args)
     {
         set_option('simple_pages_filter_page_content', (int)(boolean)$_POST['simple_pages_filter_page_content']);
+
+        /* Store show/hide plugin configurations to database. */
+        $post = $args['post'];
+        foreach($post as $option=>$value) {
+            if (strpos($option,'_hide') !== false) {
+                set_option($option, $value);
+            }
+        }
     }
 
    
@@ -115,6 +137,19 @@ class ImageManagerPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function filterAdminNavigationMain($nav)
     {
+        /*
+         * If this plugin is configured to be hidden for the current user's role then do not add it to
+         * the navigation links ($navLinks)
+         * */
+        $user = current_user();
+        $currentClass = get_class() ;
+        if(isset($user, $currentClass)){
+            $pluginName = str_replace('plugin', '', strtolower($currentClass));
+            $hide = get_option(strtolower($pluginName.'_'.$user->role.'_hide'));
+            if($hide == 1)
+                return $nav;
+        }
+
         $nav[] = array(
             'label' => __('Image Manager'),
             'uri' => url('image-manager')            
