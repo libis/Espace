@@ -50,11 +50,11 @@ class ImageManagerPlugin extends Omeka_Plugin_AbstractPlugin
         if(isset($userRoles, $currentClass)){
             $pluginName = str_replace('plugin', '', strtolower($currentClass));
             foreach($userRoles as $role){
-                $userKey = strtolower($pluginName."_".$role."_hide");
                 delete_option(strtolower($pluginName."_".$role."_hide"));
             }
         }
     }
+	
     /**
      * Add the translations.
      */
