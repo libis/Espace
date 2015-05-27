@@ -128,6 +128,9 @@ class UserProfilesPlugin extends Omeka_Plugin_AbstractPlugin
         //don't forget to delete the record relations
         $sql = "DELETE FROM `$db->RecordRelationsRelation` WHERE `object_record_type` = 'UserProfilesProfile'" ;
         $db->query($sql);
+
+        /* Remove plugin show/hide options from database. */
+        $this->removePluginHideConfiguration();
     }
 
     public function hookAfterDeleteUser($args)
@@ -141,6 +144,20 @@ class UserProfilesPlugin extends Omeka_Plugin_AbstractPlugin
 
     public function filterAdminNavigationMain($tabs)
     {
+        /*
+         * If this plugin is configured to be hidden for the current user's role then do not add it to
+         * the navigation links ($navLinks)
+         * */
+        $user = current_user();
+        $currentClass = get_class() ;
+        if(isset($user, $currentClass)){
+            $pluginName = str_replace('plugin', '', strtolower($currentClass));
+            $hide = get_option(strtolower($pluginName.'_'.$user->role.'_hide'));
+            if($hide == 1)
+                return $tabs;
+        }
+
+
         $tabs['User Profiles'] = array('label'=>'User Profiles', 'uri'=>url("user-profiles") );
         return $tabs;
     }
@@ -303,5 +320,19 @@ class UserProfilesPlugin extends Omeka_Plugin_AbstractPlugin
         //let all logged in people see the types available, but hide non-public ones from searches
         //since public/private is managed by Omeka_Db_Select_PublicPermission, this keeps them out of the navigation
         $acl->allow($roles, 'UserProfiles_Type', array('showNotPublic'));
+    }
+
+    /**
+     * Remove show/hide plugin configurations.
+     */
+    public function removePluginHideConfiguration(){
+        $userRoles = get_user_roles();
+        $currentClass = get_class() ;
+        if(isset($userRoles, $currentClass)){
+            $pluginName = str_replace('plugin', '', strtolower($currentClass));
+            foreach($userRoles as $role){
+                delete_option(strtolower($pluginName."_".$role."_hide"));
+            }
+        }
     }
 }
