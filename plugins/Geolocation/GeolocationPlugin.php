@@ -80,6 +80,9 @@ class GeolocationPlugin extends Omeka_Plugin_AbstractPlugin
         // Drop the Location table
         $db = get_db();
         $db->query("DROP TABLE IF EXISTS `$db->Location`");
+
+        /* Remove plugin show/hide options from database. */
+        $this->removePluginHideConfiguration();
     }
 
     public function hookUpgrade($args)
@@ -126,6 +129,14 @@ class GeolocationPlugin extends Omeka_Plugin_AbstractPlugin
         set_option('geolocation_use_metric_distances', $_POST['geolocation_use_metric_distances']);
         set_option('geolocation_map_type', $_POST['map_type']);
         set_option('geolocation_auto_fit_browse', $_POST['auto_fit_browse']);
+
+        /* Store show/hide plugin configurations to database. */
+        $post = $args['post'];
+        foreach($post as $option=>$value) {
+            if (strpos($option,'_hide') !== false) {
+                set_option($option, $value);
+            }
+        }
     }
 
     public function hookDefineAcl($args)
@@ -354,6 +365,19 @@ SQL
 
     public function filterAdminNavigationMain($navArray)
     {
+        /*
+         * If this plugin is configured to be hidden for the current user's role then do not add it to
+         * the navigation links ($navLinks)
+         * */
+        $user = current_user();
+        $currentClass = get_class() ;
+        if(isset($user, $currentClass)){
+            $pluginName = str_replace('plugin', '', strtolower($currentClass));
+            $hide = get_option(strtolower($pluginName.'_'.$user->role.'_hide'));
+            if($hide == 1)
+                return $navArray;
+        }
+
         $navArray['Geolocation'] = array('label'=>__('Map'), 'uri'=>url('geolocation/map/browse'));
         return $navArray;
     }
@@ -623,5 +647,19 @@ SQL
             'longitude'=> (double) get_option('geolocation_default_longitude'),
             'zoomLevel'=> (double) get_option('geolocation_default_zoom_level')
         );
+    }
+
+    /**
+     * Remove show/hide plugin configurations.
+     */
+    public function removePluginHideConfiguration(){
+        $userRoles = get_user_roles();
+        $currentClass = get_class() ;
+        if(isset($userRoles, $currentClass)){
+            $pluginName = str_replace('plugin', '', strtolower($currentClass));
+            foreach($userRoles as $role){
+                delete_option(strtolower($pluginName."_".$role."_hide"));
+            }
+        }
     }
 }
