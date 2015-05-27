@@ -188,3 +188,5 @@ pip-log.txt
 /application/logs/
 /files/
 /themes/Nabucco/images/
+
+/application/config/config.ini
