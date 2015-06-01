@@ -9,7 +9,8 @@
             <img src="<?php echo img("logo/spa_web_europeana.png");?>">
             <img src="<?php echo img("logo/LIBIS_CMYK_Into Info.jpg");?>">
             <img src="<?php echo img("logo/digitalmeetsculture_omp.jpg");?>">
-            <img src="<?php echo img("logo/KULEUVEN_CMYK_LOGO.PNG");?>">            
+            <img src="<?php echo img("logo/KULEUVEN_CMYK_LOGO.PNG");?>">             
+            <img src="<?php echo img("logo/cs_logo.png");?>">    
         </div>
         <?php if($footerText = get_theme_option('Footer Text')): ?>
         <div id="custom-footer-text">
