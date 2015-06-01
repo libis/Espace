@@ -48,7 +48,11 @@
         <!--<div id="site-title" class="two columns">
             <?php echo link_to_home_page(option('site_title'), array('target' => '_blank')); ?>
         </div>-->
-        <div id="site-title"><?php echo link_to_home_page(theme_logo()); ?></div>
+        <div id="site-title">
+                <a href="<?php echo url("/");?>">
+                    <?php echo theme_logo();?>
+                </a>
+            </div>
             <div id="primary-nav">
             <?php
                  echo public_nav_main();
