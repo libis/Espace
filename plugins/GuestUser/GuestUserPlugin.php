@@ -202,7 +202,6 @@ class GuestUserPlugin extends Omeka_Plugin_AbstractPlugin
             if($hide == 1)
                 return $navLinks;
         }
-		
         $navLinks['Guest User'] = array('label' => __("Guest Users"),
                                         'uri' => url("guest-user/user/browse?role=guest"));
         return $navLinks;
@@ -223,7 +222,7 @@ class GuestUserPlugin extends Omeka_Plugin_AbstractPlugin
                 via omeka admin. User should edit profile via 'My Profiles' (UserProfiles plugin) option in menu bar.
             */
             $navLinks[0]['label'] = "My Space";     /* Change the label of the menu. */
-            $navLinks[0]['uri'] = absolute_url('/');
+            $navLinks[0]['uri'] = absolute_url('/guest-user/user/me');
             //libis_end
 
             $navLinks[0]['id'] = 'admin-bar-welcome';
