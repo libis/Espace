@@ -190,6 +190,19 @@ class GuestUserPlugin extends Omeka_Plugin_AbstractPlugin
 
     public function filterAdminNavigationMain($navLinks)
     {
+        //libis_start
+        /*
+         * Add a menu item to let user go to the espace dashboard (not omeka dashboard). The menu item will be added
+         * to the admin navigation menu therefore will only be available to logged in users. Addition of this menu item
+         * should be done before show/hide (following code) to make sure that it is always a part of the menu)
+         * */
+        $navLinks['Espace'] = array(
+            'label' => __('Espace Dashboard'),
+            'uri' => public_url('/guest-user/user/me')
+        );
+        //libis_end
+
+        //libis_start
         /*
          * If this plugin is configured to be hidden for the current user's role then do not add it to
          * the navigation links ($navLinks)
@@ -202,6 +215,8 @@ class GuestUserPlugin extends Omeka_Plugin_AbstractPlugin
             if($hide == 1)
                 return $navLinks;
         }
+        //libis_end
+        
         $navLinks['Guest User'] = array('label' => __("Guest Users"),
                                         'uri' => url("guest-user/user/browse?role=guest"));
         return $navLinks;
