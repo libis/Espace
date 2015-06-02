@@ -90,6 +90,11 @@ class GuestUserPlugin extends Omeka_Plugin_AbstractPlugin
     {
         $acl = $args['acl'];
         $acl->addRole(new Zend_Acl_Role('guest'), null);
+
+        //libis_start
+        // Allow 'contributor' role to make its item public/private.
+        $acl->allow('contributor', 'Items', array('makePublic'));
+        //libis_end
     }
 
     public function hookConfig($args)
@@ -216,7 +221,7 @@ class GuestUserPlugin extends Omeka_Plugin_AbstractPlugin
                 return $navLinks;
         }
         //libis_end
-        
+
         $navLinks['Guest User'] = array('label' => __("Guest Users"),
                                         'uri' => url("guest-user/user/browse?role=guest"));
         return $navLinks;
