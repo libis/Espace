@@ -95,6 +95,11 @@ class GuestUserPlugin extends Omeka_Plugin_AbstractPlugin
         // Allow 'contributor' role to make its item public/private.
         $acl->allow('contributor', 'Items', array('makePublic'));
         //libis_end
+
+        //libis_start
+        // Do not show other's private items and collections, and search on them to 'contributor' role.
+        $acl->deny('contributor', array('Items', 'Collections', 'Search'), array('showNotPublic'));
+        //libis_end
     }
 
     public function hookConfig($args)
