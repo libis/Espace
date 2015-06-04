@@ -26,6 +26,7 @@
 <div id="browse-stories">  
   <div id="filters" class="button-group">
     <div class="filter-stories">filter stories &#9755;</div>  
+    <button data-filter="*">all</button>
     <button data-filter=".new">new</button>
     <button data-filter=".popular">popular</button>
     <button data-filter=".featured">featured</button>
@@ -39,15 +40,45 @@
     <div class="filter-stories browse-all-stories"><a href="<?php echo url('exhibits');?>">browse all stories</a></div>  
 </div>
 
-<?php $records = libis_search_exhibits($_GET);?>
+<?php $stories = libis_search_exhibits($_GET);?>
 <div id="container">
         <div class="grid-sizer"></div>
         <div class="gutter-sizer"></div>
         
-        <div class="stamp story">
+        <div class="stamp story featured popular new">
             <p><img class="make-icon" src="<?php echo img('book-icon_white.png');?>"><br>Create your own story</p>
         </div>
         
+        <?php if(is_array($stories)):?>
+            <?php foreach($stories as $story):?>
+                <?php 
+                    $class='';
+                    if($story->featured == 1):
+                        $class.=" featured";
+                    endif;
+                    if(strtotime($story->added)<strtotime('-30 days')):
+                        $class.=" new";
+                    endif;
+                ?>
+                <div class="story<?php echo $class;?>">   
+                    <?php if ($exhibitImage = record_image($story, 'fullsize')): ?>
+                        <div class="images">                   
+                            <?php echo exhibit_builder_link_to_exhibit($story, $exhibitImage); ?>
+                        </div> 
+                    <?php endif; ?>
+                    <div class="words">
+                        <h3><?php echo exhibit_builder_link_to_exhibit($story); ?></h3>
+                        <p><?php echo snippet_by_word_count(metadata($story, 'description', array('no_escape' => true)),35); ?></p>
+                        <div class="more">
+                            <?php echo exhibit_builder_link_to_exhibit($story,'read more'); ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach;?>
+        <?php else:?>
+            <?php echo $stories;?>
+        <?php endif;?>
+            
         <div class="story featured">            
             <div class="images"><img src="http://www.photoconsortium.net/wp-content/uploads/2015/01/R8_M_742_103_MHF-474x284.jpg"></div>
             <div class="words">

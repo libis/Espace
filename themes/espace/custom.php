@@ -2,8 +2,18 @@
 
 function libis_search_exhibits($params){
     $db = get_db();
-    $records = $db->getTable('SearchText')->findBy($params);
     
-    return $records;
+    if(!$params):
+        $records = get_records('Exhibit',array('recent'=> true),50);
+        return $records;
+    endif;
+    
+    
+    $records = $db->getTable('SearchText')->findBy($params);    
+    if(!$records):
+        return 'No stories were found';
+    endif;
+    
+    return $records;    
 }
 
