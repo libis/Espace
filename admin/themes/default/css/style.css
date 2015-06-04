@@ -2435,3 +2435,9 @@ button.remove_search {
     float: left;
     margin: 0;
 }
+
+/* exhibits 
+================================================== */
+#exhibit-metadata-form .field:nth-child(7){
+    display:none;
+}
