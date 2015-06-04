@@ -49,7 +49,7 @@
             <?php echo link_to_home_page(option('site_title'), array('target' => '_blank')); ?>
         </div>-->
         <div id="site-title">
-                <a href="<?php echo url("/");?>">
+                <a href="<?php echo PUBLIC_BASE_URL.'/';?>">
                     <?php echo theme_logo();?>
                 </a>
             </div>
