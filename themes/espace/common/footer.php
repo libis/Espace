@@ -29,6 +29,8 @@
     jQuery(document).ready(function(){
         Omeka.showAdvancedForm();
                Omeka.dropDown();
+               
+               
     });
 </script>
 

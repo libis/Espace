@@ -504,6 +504,39 @@ button {
     
 }
 
+#admin-bar-public .navigation{
+    position:relative;
+}
+
+#admin-bar-public ul ul{
+	display:none;
+	position:absolute;
+	top:25px;
+	left:0;
+        right:15px;
+	background:#FF4D4D;
+	padding:0 0 5px 0;
+        z-index:200;
+}
+
+#admin-bar-public ul ul li{
+	float:none;
+	width:200px
+}
+
+#admin-bar-public ul ul a{
+	line-height:120%;
+	padding:15px 15px
+}
+
+#admin-bar-public ul ul ul{
+	top:0;
+	left:100%
+}
+
+#admin-bar-public ul li:hover > ul{
+	display:block
+}
 #secondary-nav, .secondary-nav {
   margin-bottom: 1.5em;
   overflow: auto;

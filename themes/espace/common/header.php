@@ -85,9 +85,7 @@
         
 		<?php if ((get_theme_option('Header Image') !== null)): ?>
 		
-		<?php endif; ?>
-		
-		
+		<?php endif; ?>	
                       
     <div id="content">
 
