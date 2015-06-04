@@ -34,4 +34,14 @@
 </nav>
 <?php endif; ?>
 
+<!--libis_start-->
+<!--Include AddThis script to make social media sharing plugin available.
+The plugin will be available only to logged in users. -->
+<?php if(current_user()): ?>
+    <div id="share" class="panel">
+        <?php echo (get_option('addThis_script')); ?>
+    </div>
+<?php endif; ?>
+<!--libis_end-->
+
 <?php echo foot(); ?>

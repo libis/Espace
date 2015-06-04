@@ -90,6 +90,16 @@ class GuestUserPlugin extends Omeka_Plugin_AbstractPlugin
     {
         $acl = $args['acl'];
         $acl->addRole(new Zend_Acl_Role('guest'), null);
+
+        //libis_start
+        // Allow 'contributor' role to make its item public/private.
+        $acl->allow('contributor', 'Items', array('makePublic'));
+        //libis_end
+
+        //libis_start
+        // Do not show other's private items and collections, and search on them to 'contributor' role.
+        $acl->deny('contributor', array('Items', 'Collections', 'Search'), array('showNotPublic'));
+        //libis_end
     }
 
     public function hookConfig($args)
@@ -190,6 +200,19 @@ class GuestUserPlugin extends Omeka_Plugin_AbstractPlugin
 
     public function filterAdminNavigationMain($navLinks)
     {
+        //libis_start
+        /*
+         * Add a menu item to let user go to the espace dashboard (not omeka dashboard). The menu item will be added
+         * to the admin navigation menu therefore will only be available to logged in users. Addition of this menu item
+         * should be done before show/hide (following code) to make sure that it is always a part of the menu)
+         * */
+        $navLinks['Espace'] = array(
+            'label' => __('Espace Dashboard'),
+            'uri' => public_url('/guest-user/user/me')
+        );
+        //libis_end
+
+        //libis_start
         /*
          * If this plugin is configured to be hidden for the current user's role then do not add it to
          * the navigation links ($navLinks)
@@ -202,7 +225,8 @@ class GuestUserPlugin extends Omeka_Plugin_AbstractPlugin
             if($hide == 1)
                 return $navLinks;
         }
-		
+        //libis_end
+
         $navLinks['Guest User'] = array('label' => __("Guest Users"),
                                         'uri' => url("guest-user/user/browse?role=guest"));
         return $navLinks;
@@ -223,7 +247,7 @@ class GuestUserPlugin extends Omeka_Plugin_AbstractPlugin
                 via omeka admin. User should edit profile via 'My Profiles' (UserProfiles plugin) option in menu bar.
             */
             $navLinks[0]['label'] = "My Space";     /* Change the label of the menu. */
-            $navLinks[0]['uri'] = absolute_url('/');
+            $navLinks[0]['uri'] = absolute_url('/guest-user/user/me');
             //libis_end
 
             $navLinks[0]['id'] = 'admin-bar-welcome';
