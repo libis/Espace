@@ -30,7 +30,8 @@
         Omeka.showAdvancedForm();
                Omeka.dropDown();
                
-               
+        var d = jQuery('#admin-bar-public a:contains("Profiles")');
+        d.text(d.text().trim().replace(/Profiles/i, "Profile"));       
     });
 </script>
 
