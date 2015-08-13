@@ -2,16 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/var/www/html/omeka/espace/plugins/ExhibitBuilder/helpers/ExhibitPageFunctions.php</file>
-            <file>file:/var/www/html/omeka/espace/themes/espace/css/style.css</file>
-            <file>file:/var/www/html/omeka/espace/admin/themes/default/css/style.css</file>
-            <file>file:/var/www/html/omeka/espace/plugins/ExhibitBuilder/views/shared/exhibit_layouts/file-text/layout.php</file>
-            <file>file:/var/www/html/omeka/espace/themes/espace/exhibit-builder/exhibits/show.php</file>
-            <file>file:/var/www/html/omeka/espace/themes/espace/common/footer.php</file>
-            <file>file:/var/www/html/omeka/espace/admin/themes/default/common/footer.php</file>
-            <file>file:/var/www/html/omeka/espace/themes/espace/common/header.php</file>
-            <file>file:/var/www/html/omeka/espace/admin/themes/default/common/header.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
