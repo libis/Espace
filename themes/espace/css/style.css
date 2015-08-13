@@ -1724,12 +1724,11 @@ footer nav + p {
   margin: 0 20px 1.5em 0;
 }
 
+.exhibit{
+    clear:both;
+}
 .exhibit .description {
-  float: left;
-  display: inline;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 520px;
+  
 }
 @media only screen and (max-width: 767px) {
   .exhibit .description {
