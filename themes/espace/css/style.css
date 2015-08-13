@@ -819,6 +819,7 @@ button {
 
 #container h3{
     font-size:1.3em;
+    line-height: 1.5em;
     font-weight:normal;
     color:#FF4D4D;
     font-family: 'Vollkorn', Arial, sans-serif;
@@ -1583,7 +1584,7 @@ footer nav + p {
 }
 
 #exhibit-nav-next .next-page, #exhibit-nav-prev .previous-page{
-    border:2px solid #FF4D4D;
+    
     padding:2px;
 }
 
@@ -2114,16 +2115,20 @@ h2#get_started {
     float:none;
 }
 
+#exhibit-pages h4{
+    
+  background:#FF4D4D;
+  
+  padding:5px;
+}
+
 .story-title{
   font-weight: normal;
-  background:#FF4D4D;
    color:#fff;
-  padding:5px;
 }
 
 .story-title a{
   font-weight: normal;
-  background:#FF4D4D;
    color:#fff;
   padding:5px;
   font-style:italic;
