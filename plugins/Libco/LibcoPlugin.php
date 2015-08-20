@@ -44,9 +44,11 @@ class LibcoPlugin extends Omeka_Plugin_AbstractPlugin {
      */
     public function hookAfterSaveItem($args)
     {
+		/*
         $record = $args['record'];
         $recordKey = $this->libcoService->export($record, null);
         $this->recordMpping->addMapping($record->id, strtolower(get_class($record)), $recordKey);
+		*/
 
     }
 
@@ -57,12 +59,14 @@ class LibcoPlugin extends Omeka_Plugin_AbstractPlugin {
      */
     public function hookAfterDeleteItem($args)
     {
+		/*
         $record = $args['record'];
         $recordKey = $this->recordMpping->getMappingByRecordId($record->id);
         if(!empty($recordKey)){
             $this->libcoService->deleteRecord($recordKey[0]->datastore_key);
             $this->recordMpping->deleteMapping($record->id);
         }
+		*/
 
     }
 
@@ -73,9 +77,11 @@ class LibcoPlugin extends Omeka_Plugin_AbstractPlugin {
      */
     public function hookAfterSaveExhibit($args)
     {
+		/*
         $record = $args['record'];
         $recordKey = $this->libcoService->export($record, null);
         $this->recordMpping->addMapping($record->id, strtolower(get_class($record)), $recordKey);
+		*/
     }
 
 
@@ -86,7 +92,7 @@ class LibcoPlugin extends Omeka_Plugin_AbstractPlugin {
      */
     public function hookAfterDeleteExhibit($args)
     {
-        $this->libcoService->deleteRecord($args['record']);
+        //$this->libcoService->deleteRecord($args['record']);
     }
 
     /**
@@ -106,7 +112,7 @@ class LibcoPlugin extends Omeka_Plugin_AbstractPlugin {
      */
     public function hookAfterDeleteUser($args)
     {
-        $this->libcoService->deleteRecord($args['record']);
+        //$this->libcoService->deleteRecord($args['record']);
         //$user = $args['record'];
         //$userId = $user->id;
     }
