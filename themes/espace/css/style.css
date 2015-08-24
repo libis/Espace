@@ -616,6 +616,21 @@ button {
     
 }
 
+#search-form-exhibit button{
+    border-color:#ff4d4d;
+    color: #ff4d4d;
+    display:inline;
+    padding:3px;
+    height:auto;
+}
+
+#search-form-exhibit input{
+    border-color:#ff4d4d;
+    color: #ff4d4d;
+    display:inline;
+    padding:4px;
+}
+
 #home #content {
     width:100%;
     background: #FF4D4D;

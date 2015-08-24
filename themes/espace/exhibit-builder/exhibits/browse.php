@@ -6,6 +6,20 @@ echo head(array('title' => $title, 'bodyclass' => 'exhibits exhibits-browse'));
 <h1><?php echo $title; ?> <?php echo __('(%s total)', $total_results); ?></h1>
 <?php if (count($exhibits) > 0): ?>
 
+<form id="search-form-exhibit" method="get" action="" name="search-form">
+    <input id="query" type="text" placeholder="..." title="Search" value="" name="query">
+    <input type="hidden" name="record_types[]" value="Exhibit">
+    <input type="hidden" name="query_type" value="exact_match">
+    <button id="submit_search" value="Search" type="submit" name="submit_search">Search</button>
+  </form>
+
+<?php
+$stories = libis_search_exhibits($_GET);
+if(is_array($stories)):
+    set_loop_records('exhibit',$stories);
+endif;
+?>
+
 <nav class="navigation secondary-nav">
     <?php echo nav(array(
         array(
@@ -25,7 +39,7 @@ echo head(array('title' => $title, 'bodyclass' => 'exhibits exhibits-browse'));
 <?php foreach (loop('exhibit') as $exhibit): ?>
     <?php $exhibitCount++; ?>
     <div class="exhibit <?php if ($exhibitCount%2==1) echo ' even'; else echo ' odd'; ?>">
-        <h2><?php echo link_to_exhibit(); ?></h2>
+        
         <?php if ($exhibitImage = record_image($exhibit, 'square_thumbnail')): ?>
             <?php echo exhibit_builder_link_to_exhibit($exhibit, $exhibitImage, array('class' => 'image')); ?>
         <?php endif; ?>

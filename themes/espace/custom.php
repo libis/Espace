@@ -9,7 +9,7 @@ function libis_search_exhibits($params){
     endif;
     
     
-    $records = $db->getTable('SearchText')->findBy($params);    
+    $records = $db->getTable('Exhibit')->findBy($params);    
     if(!$records):
         return 'No stories were found';
     endif;
