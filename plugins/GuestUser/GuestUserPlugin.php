@@ -207,7 +207,7 @@ class GuestUserPlugin extends Omeka_Plugin_AbstractPlugin
          * should be done before show/hide (following code) to make sure that it is always a part of the menu)
          * */
         $navLinks['Espace'] = array(
-            'label' => __('Espace Dashboard'),
+            'label' => __('My Space'),
             'uri' => public_url('/guest-user/user/me')
         );
         //libis_end
