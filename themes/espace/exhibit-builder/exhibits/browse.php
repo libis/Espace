@@ -7,7 +7,7 @@ echo head(array('title' => $title, 'bodyclass' => 'exhibits exhibits-browse'));
 <?php if (count($exhibits) > 0): ?>
 
 <form id="search-form-exhibit" method="get" action="" name="search-form">
-    <input id="query" type="text" placeholder="..." title="Search" value="" name="query">
+    <input id="query" type="text" placeholder="" title="Search" value="" name="query">
     <input type="hidden" name="record_types[]" value="Exhibit">
     <input type="hidden" name="query_type" value="exact_match">
     <button id="submit_search" value="Search" type="submit" name="submit_search">Search</button>

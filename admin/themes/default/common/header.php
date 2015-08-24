@@ -85,7 +85,7 @@
     <?php echo common('content-nav', array('title' => $title)); ?>
 
     <div class="subhead">
-        <?php echo search_form(array('show_advanced' => true, 'form_attributes'=> array('role'=>'search'))); ?>
+        <?php echo search_form(array('show_advanced' => false, 'form_attributes'=> array('role'=>'search'))); ?>
         <?php if (isset($title)) : ?>
             <h1 id="content-heading" class="section-title" title="<?php echo $title; ?>"><?php echo $title ?></h1>
         <?php endif; ?>
