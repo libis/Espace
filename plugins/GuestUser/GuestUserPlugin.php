@@ -322,7 +322,7 @@ class GuestUserPlugin extends Omeka_Plugin_AbstractPlugin
 
     private function storyUserWidget(){
         $html = "";
-        $widgetUserContent = array('label'=> __('My Contents'));
+        $widgetUserContent = array('label'=> __('My Content'));
         $html .= "<ul>";
         $html .= "<li><a href='".url('admin/exhibits')."'>" . __("Stories") . "</a></li>";
         $html .= "<li><a href='".url('admin/items/browse')."'>" . __("Items") . "</a></li>";
