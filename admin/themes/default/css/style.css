@@ -757,6 +757,10 @@ footer {
         text-align: center;
         margin: -1.125em 0 0 -.25em;
     }
+    
+    #search-by-range{
+        display:none;
+    }
 
 .subhead {
     position: relative;

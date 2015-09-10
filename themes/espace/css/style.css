@@ -458,13 +458,20 @@ button {
 #primary-nav li:hover > ul, #primary-nav li ul li:hover > ul {
   position: absolute;
   display: block;
-  top: 3em;
+  top: 3.65em;
   margin-top: 1px;
   z-index: 1000;
-  -moz-box-shadow: #cccccc 0 3px 5px;
-  -webkit-box-shadow: #cccccc 0 3px 5px;
-  box-shadow: #cccccc 0 3px 5px;
+  background:#FF4D4D;
+  color:#fff;
+  width:100%;
+  min-width:200px;
+  border-top:1px solid #fff;  
 }
+
+#primary-nav li:hover > ul a, #primary-nav li ul li:hover > ul a {
+    border: none;
+}
+
 #primary-nav li:hover > ul li {
   width: 160px;
 }
