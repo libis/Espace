@@ -6,6 +6,10 @@
         <li><a href="<?php echo url('items/browse', array('public' => 1)); ?>"><?php echo __('Public'); ?></a></li>
         <li><a href="<?php echo url('items/browse', array('public' => 0)); ?>"><?php echo __('Private'); ?></a></li>
         <li><a href="<?php echo url('items/browse', array('featured' => 1)); ?>"><?php echo __('Featured'); ?></a></li>
+        <!--libis_start-->
+        <!--Add a new filter to see own items(public and private)-->
+        <li><a href="<?php echo url('items/browse', array('owner' => current_user()->id)); ?>"><?php echo __('Own'); ?></a></li>
+        <!--libis_end-->
     </ul>
     </li>
 </ul>
