@@ -7,7 +7,11 @@
             ),
             array(
                 'label' => __('Items'),
-                'uri' => url('items')
+                //'uri' => url('items')
+                //libis_start
+                /* By default user will see its own public/private items. */
+                'uri' => url('items/browse', array('owner' => current_user()->id))
+                //libis_end
             ),
             array(
                 'label' => __('Collections'),

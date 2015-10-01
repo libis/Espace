@@ -58,6 +58,9 @@ class Omeka_View_Helper_ItemSearchFilters extends Zend_View_Helper_Abstract
                         break;
 
                     case 'user':
+                    //libis_start
+                    case 'owner': /* Display user name when 'owner' filter is used to get user's own items. */
+                    //libis_end
                         $user = $db->getTable('User')->find($value);
                         if ($user) {
                             $displayValue = $user->name;
