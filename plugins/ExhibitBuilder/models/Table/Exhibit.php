@@ -101,6 +101,11 @@ class Table_Exhibit extends Omeka_Db_Table
                 case 'featured':
                     $this->filterByFeatured($select, $params['featured']);
                     break;
+                //libis_start
+                case 'owner': /* Filter a user's own exhibits from others. */
+                    $this->filterByUser($select, $params['owner']);
+                    break;
+                //libis_end
             }
         }
         return $select;
@@ -192,6 +197,19 @@ class Table_Exhibit extends Omeka_Db_Table
             $select->where('exhibits.featured = 1');
         } else {
             $select->where('exhibits.featured = 0');
+        }
+    }
+
+    /**
+     * Apply a filter to the exhibits based on whether or not they are public
+     *
+     * @param Zend_Db_Select
+     * @param integer $userId Id of the user whose exhibits are to be shown
+     */
+    public function filterByUser($select, $userId)
+    {
+        if (!empty($userId) && $userId > 0) {
+            $select->where('exhibits.owner_id = '. $userId);
         }
     }
 }
