@@ -10,6 +10,15 @@ echo flash();
         <a href="<?php echo html_escape(url('collections/add')); ?>" class="small green button">
             <?php echo __('Add a Collection'); ?>
         </a>
+        <!--Libis_start-->
+        <a href="<?php echo html_escape(url('Collections', array('owner' => current_user()->id))); ?>" class="small green button">
+            <?php echo __('View Own Collections'); ?>
+        </a>
+
+        <a href="<?php echo html_escape(url('Collections')); ?>" class="small green button">
+            <?php echo __('View All Collections'); ?>
+        </a>
+        <!--Libis_end-->		
     <?php endif; ?>
     </div>
     <?php echo pagination_links(); ?>
