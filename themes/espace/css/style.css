@@ -1000,7 +1000,7 @@ ul.title-list {
 .element {
   overflow: hidden;
   clear: both;
-  margin-bottom: 1.5em;
+  margin-bottom: 0.4em;
 }
 
 .browse .item {
@@ -1151,7 +1151,6 @@ ul.title-list {
 .item-img { 
   margin-right: 20px;
   float: left; 
-  width:100px;
 }
 
 .item-img img{
@@ -1456,9 +1455,7 @@ ul.title-list {
 }
 .collections .item-img a {
   display: block;
-  height: 6em;
-  border: 1px solid #ccc;
-  padding: 2px;
+  height: 7em;
 }
 .collections .item-img img {
   height: 100%;
@@ -1467,7 +1464,7 @@ ul.title-list {
 
 .collections .item {
   overflow: hidden;
-  border-color: #ccc;
+  border-color: #eee;
   border-top-width: 0.08333em;
   border-top-style: solid;
   padding-top: -0.08333em;
