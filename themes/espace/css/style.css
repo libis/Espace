@@ -956,7 +956,6 @@ button {
   display: inline-block;
   height: 0;
   width: 0;
-  text-decoration: underline;
   margin-right: 10px;
 }
 
@@ -1123,7 +1122,6 @@ ul.title-list {
 /* @group ----- Items/Browse ----- */
 .browse .item h2 {
   margin:0;
-  width: 220px;
   font-weight:normal;
   font-style:italic;
   line-height:20px;
