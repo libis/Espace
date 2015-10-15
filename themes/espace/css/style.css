@@ -586,7 +586,6 @@ button {
   margin-left: 0;
 }
 .pagination li {
-  height: 3em;
   border: solid #e7e7e7;
   border-width: 1px 0 1px 1px;
   float: left;
@@ -603,11 +602,13 @@ button {
 }
 
 .page-input input[type=text] {
-  border: 1px solid #ccc;
+  border: 1px solid #ff4d4d !important;
   text-align: right;
   width: 50px;
   margin-right: 5px;
-  display: inline-block;
+  display: inline-block !important;
+  float:none !important;
+  background:#ccc;
 }
 
 /* @end */
@@ -1013,6 +1014,7 @@ ul.title-list {
 .browse button {
     border:2px solid #FF4D4D;
     color: #FF4D4D;
+    margin:0;
 }
 
 .browse input[type="text"] {
@@ -1024,6 +1026,8 @@ ul.title-list {
     float: left;
     margin-right: 3px;
 }
+
+
 
 
 #sort-links + .item {
