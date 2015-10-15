@@ -17,7 +17,6 @@ class GeolocationPlugin extends Omeka_Plugin_AbstractPlugin
         'admin_items_show_sidebar',
         'public_items_show',
         'admin_items_search',
-        'public_items_search',
         'items_browse_sql',
         'public_head',
         'admin_head',

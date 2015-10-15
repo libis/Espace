@@ -1304,6 +1304,11 @@ ul.title-list {
   line-height: 18px;
 }
 
+#advanced-search-form button{
+    color:#FF4D4D;
+    border-color: #FF4D4D;
+}
+
 /* @end */
 /* @group ----- Collections/Browse ----- */
 .collections .collection {
