@@ -426,7 +426,10 @@ function exhibit_builder_admin_nav($navArray)
 {
     $navArray[] = array(
         'label' => __('Exhibits'),
-        'uri' => url('exhibits'),
+        //'uri' => url('exhibits'),
+        //libis_start
+        'uri' => url('exhibits', array('owner' => current_user()->id)),
+        //libis_end		
         'resource' => 'ExhibitBuilder_Exhibits',
         'privilege' => 'browse'
     );

@@ -87,6 +87,9 @@ echo head(array('title'=> $title, 'bodyclass'=>'exhibits'));
             <span class="hide-search-label"><?php echo __('Hide Search Form'); ?></span>
         </button>
         <a href="<?php echo url('exhibit-builder/items/browse'); ?>" id="view-all-items" class="green button"><?php echo __('View All Items'); ?></a>
+        <!--libist_start-->
+        <a href="<?php echo url('exhibit-builder/items/browse', array('owner' => current_user()->id)); ?>" id="view-all-items" class="green button"><?php echo __('View Own Items'); ?></a>
+        <!--libis_end-->		
         <div id="page-search-form" class="container-twelve">
         <?php
             $action = url(array('module' => 'exhibit-builder',
