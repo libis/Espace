@@ -2003,18 +2003,21 @@ a:hover
 ::-webkit-input-placeholder
 {
 	color: #FF4D4D;
+        opacity: 1 !important;
 }
 :-moz-placeholder
 {
-	color: #FF4D4D;
+	display:none;
 }
 ::-moz-placeholder
 {
 	color: #FF4D4D;
+        opacity: 1 !important;
 }
 :-ms-input-placeholder
 {
 	color: #FF4D4D;
+        opacity: 1 !important;
 }
 footer{
     border-top:1px solid #eee;
