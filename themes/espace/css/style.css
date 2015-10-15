@@ -1018,16 +1018,13 @@ ul.title-list {
 
 .browse input[type="text"] {
     background: none repeat scroll 0 0 #fff;
-    border: 2px solid #FF4D4D;
+    border: 1px solid #FF4D4D;
     height:30px;
     color: #FF4D4D;
     display: block;
     float: left;
     margin-right: 3px;
 }
-
-
-
 
 #sort-links + .item {
   border-top: 1px solid #eee;
@@ -2007,22 +2004,19 @@ a:hover
 }
 ::-webkit-input-placeholder
 {
-	color: #FF4D4D;
-        opacity: 1 !important;
+	color: #FFF;
 }
 :-moz-placeholder
 {
-	display:none;
+	color: #FFF;
 }
 ::-moz-placeholder
 {
-	color: #FF4D4D;
-        opacity: 1 !important;
+	color: #FFF;
 }
 :-ms-input-placeholder
 {
-	color: #FF4D4D;
-        opacity: 1 !important;
+	color: #FFF;
 }
 footer{
     border-top:1px solid #eee;
