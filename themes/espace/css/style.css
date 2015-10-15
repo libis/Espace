@@ -273,10 +273,10 @@ button {
   height: 30px;
 }
 
-form button{
-    color:#FF4D4D;
-    margin:5px 0;
-    border:1px solid #FF4D4D;
+#submitform{
+    color:#FFF;
+    margin:0;
+    border:1px solid ;
 }
 
 #filters{
@@ -868,6 +868,15 @@ form button{
     font-size:3em;
     font-style:italics;  
     padding:20px;
+}
+
+#container .stamp a{
+    color:#fff;
+}
+
+#secondary .stamp a{
+    color:#fff;
+    font-size:0.9em;
 }
 
 .stamp p{
@@ -1653,9 +1662,8 @@ footer nav + p {
   float: left;
   display: inline;
   width: 680px;
-  margin-right: 0;
-  padding-right: 40px;
   margin-left: 0;
+  padding: 1em 2em 1em 0;
 }
 @media only screen and (max-width: 767px) {
   .page #primary,.exhibits #primary {
@@ -1733,10 +1741,6 @@ footer nav + p {
 
 .exhibit-block{
     overflow:auto;
-    padding:1em 0;
-}
-
-.exhibit-description{
     padding:1em 0;
 }
 
