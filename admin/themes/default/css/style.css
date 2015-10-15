@@ -52,9 +52,13 @@ h1 {
     font-weight: normal;
 }
 
-h2 { font-size: 21px; }
+h2 {font-family: "Droid Sans",sans-serif;
+    font-style: normal;
+    font-weight: 500; 
+    font-size: 20px; }
 
 h3 {
+    font-family: "Droid Sans",sans-serif;
     font-size: 21px;
     font-weight: normal;
 }
@@ -1591,7 +1595,9 @@ header .container{
 
 .plugins.browse .plugin-metadata {
     margin: 0;
-    font-weight: bold;
+    font-style: italic;
+    margin:5px 0;
+    
 }
 
 .plugins.browse .action-links li {
