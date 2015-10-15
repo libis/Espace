@@ -124,7 +124,7 @@ $formAttributes['method'] = 'GET';
     <?php endif; ?>
 
     <div class="field">
-        <?php echo $this->formLabel('tag-search', __('Search By Tags')); ?>
+        <?php echo $this->formLabel('tag-search', __('Search By Tag')); ?>
         <div class="inputs">
         <?php
             echo $this->formText('tags', @$_REQUEST['tags'],
@@ -153,7 +153,8 @@ $formAttributes['method'] = 'GET';
         </div>
     </div>
     <?php endif; ?>
-
+    
+    <?php fire_plugin_hook('public_items_search', array('view' => $this)); ?>
     <div>
         <?php if (!isset($buttonText)) $buttonText = __('Search for items'); ?>
         <input type="submit" class="submit" name="submit_search" id="submit_search_advanced" value="<?php echo $buttonText ?>">

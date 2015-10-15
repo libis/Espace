@@ -18,7 +18,8 @@
                 //libis_start
                 /* By default user will see its own public/private collections. */
                 'uri' => url('Collections', array('owner' => current_user()->id))
-                //libis_end            ),
+                //libis_end      
+            ),
             array(
                 'label' => __('Item Types'),
                 'uri' => url('item-types')
