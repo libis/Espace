@@ -57,8 +57,7 @@ class LibcoPlugin extends Omeka_Plugin_AbstractPlugin {
         delete_option('libco_server_name');
         delete_option('libco_server_url');
         delete_option('libco_url_path');
-        delete_option('libco_server_login_id');
-        delete_option('libco_server_login_password');
+        delete_option('libco_server_proxy');
         delete_option('libco_server_login_token');
     }
 
