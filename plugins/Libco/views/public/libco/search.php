@@ -23,9 +23,6 @@ endif;
 
 <?php
     if(isset($_POST['eurecords'])){
-
-        var_dump($_POST['eurecords']);
-
         $currentUser = current_user();
         if(!isset($currentUser)){
             echo 'To import items from Europeana Space into Omeka you need to login.';
@@ -74,7 +71,6 @@ endif;
                             </td>
                         </tr>
                     </table>
-
                 </td>
             </tr>
             <tr>
@@ -97,8 +93,7 @@ endif;
                 <tr><td style="column-span: 3"> <?php echo $source."(".sizeof($items).")"; ?> </td></tr>
                 <?php
                 foreach($items as $data){
-                    $titleData = current($data['title']);
-                    $title = $titleData['value'];
+                    $title = $data['title'];
                     $weblink = $data['url'];
                     $url = $weblink['fromSourceAPI'];
                     ?>
