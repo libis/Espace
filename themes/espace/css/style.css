@@ -273,6 +273,12 @@ button {
   height: 30px;
 }
 
+form button {
+    color:#FF4D4D;
+    margin:5px 0;
+    border:1px solid #FF4D4D;
+}
+
 #submitform{
     color:#FFF;
     margin:0;
