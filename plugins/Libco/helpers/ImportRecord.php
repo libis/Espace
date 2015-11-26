@@ -23,13 +23,13 @@ class ImportRecord {
 
         /* Create collection. */
         if(!empty($this->collectionName)){
-            $isPublicCollection = 0;
-            $isFeaturedCollection = 0;
+            $isPublicCollection = 0;	// by default collection is private
+            $isFeaturedCollection = 0;	// by default collection is not featured
             $this->addCollection($isPublicCollection, $isFeaturedCollection);
         }
 
         $counter = 0;
-        $isPublic = 0;      // by default imported records are not public
+        $isPublic = 1;      // by default imported records are public
         $isFeatured = 0;    // by default imported records are not featured
         $invalidRecords = 0;
 
