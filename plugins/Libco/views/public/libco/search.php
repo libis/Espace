@@ -63,9 +63,9 @@ endif;
                     <table>
                         <tr style="padding: 0px">
                             <td style="align-content:center">
-                                <label></label><input type="checkbox" name="chbcollection"> Make Collection </label>
+                                <label></label><input type="checkbox" name="chbcollection"> <?php echo __("Create A New Collection"); ?> </label>
                             </td>
-                            <td> <?php echo __("Name"); ?> </td>
+                            <td> <?php echo __("New Collection Name"); ?> </td>
                             <td>
                                 <input type="text" name="txtncollectionname" disabled>
                             </td>
