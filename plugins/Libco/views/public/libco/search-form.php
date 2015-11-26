@@ -33,7 +33,7 @@ $formAttributes = array(
     </tr>
     <tr>
         <td>
-            <?php echo $this->formText('q', $query, array('title' => __('Search keywords'), 'size' => 30)); ?>
+            <?php echo $this->formText('q', $query, array('title' => __('Search keywords'), 'size' => 40, 'placeholder' => 'Type here and press Search button')); ?>
         </td>
         <td>
             <?php echo $this->formButton('', __('Search'), array('type' => 'submit')); ?>
