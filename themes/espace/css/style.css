@@ -304,6 +304,15 @@ button {
     margin-top:4px;
 }
 
+#browse-stories form button{
+    color: #fff;
+    border:2px solid #fff;
+    margin:0;
+}
+
+#libco-search-form *::-moz-placeholder {
+    color: #000;
+}
 
 #advanced-search {
   width: 30px;
@@ -2012,7 +2021,7 @@ a:hover
 }
 ::-moz-placeholder
 {
-	color: #FFF;
+	color: #000;
 }
 :-ms-input-placeholder
 {
