@@ -1,7 +1,7 @@
 <form id="exhibit-metadata-form" method="post" class="exhibit-builder">
     <section class="seven columns alpha">
     <fieldset>
-        <legend><?php echo __('Exhibit Metadata'); ?></legend>
+        <legend><?php echo __('Story Metadata'); ?></legend>
         <div class="field">
             <div class="two columns alpha">
                 <?php echo $this->formLabel('title', __('Title')); ?>
@@ -59,7 +59,7 @@
                 <?php echo $this->formLabel('use_summary_page', __('Use Summary Page?')); ?>
             </div>
             <div class="five columns omega inputs">
-                <p class="explanation"><?php echo __("Start the exhibit on the summary page. If unchecked, start on the first exhibit page if it exists."); ?></p>
+                <p class="explanation"><?php echo __("Start the story on the summary page. If unchecked, start on the first story page if it exists."); ?></p>
                 <?php echo $this->formCheckbox('use_summary_page', $exhibit->use_summary_page, array(), array('1', '0')); ?>
             </div>
         </div>
@@ -86,7 +86,7 @@
             <?php if ($exhibit->exists()): ?>
                 <?php echo exhibit_builder_link_to_exhibit($exhibit, __('View Public Page'), array('class' => 'big blue button', 'target' => '_blank')); ?>
                 <?php if (is_allowed($exhibit, 'delete')): ?>
-                    <?php echo link_to($exhibit, 'delete-confirm', __('Delete Exhibit'), array('class' => 'big red button delete-confirm')); ?>
+                    <?php echo link_to($exhibit, 'delete-confirm', __('Delete Story'), array('class' => 'big red button delete-confirm')); ?>
                 <?php endif; ?>
             <?php endif; ?>
             <div id="public-featured">

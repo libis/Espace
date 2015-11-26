@@ -395,7 +395,7 @@ function exhibit_builder_admin_head()
 function exhibit_builder_dashboard_stats($stats)
 {
     if (is_allowed('ExhibitBuilder_Exhibits', 'browse')) {
-        $stats[] = array(link_to('exhibits', array(), total_records('Exhibits')), __('exhibits'));
+        $stats[] = array(link_to('exhibits', array(), total_records('Exhibits')), __('stories'));
     }
     return $stats;
 }
@@ -425,7 +425,7 @@ function exhibit_builder_public_main_nav($navArray)
 function exhibit_builder_admin_nav($navArray)
 {
     $navArray[] = array(
-        'label' => __('Exhibits'),
+        'label' => __('Stories'),
         //'uri' => url('exhibits'),
         //libis_start
         'uri' => url('exhibits', array('owner' => current_user()->id)),

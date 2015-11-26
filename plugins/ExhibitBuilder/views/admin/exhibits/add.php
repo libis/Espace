@@ -1,5 +1,5 @@
 <?php
-    $title = __('Add Exhibit');
+    $title = __('Add Story');
     echo head(array('title' => html_escape($title), 'bodyclass' => 'exhibits'));
 ?>
     <div id="exhibits-breadcrumb">

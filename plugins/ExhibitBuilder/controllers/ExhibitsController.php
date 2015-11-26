@@ -50,7 +50,7 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
      */
     protected function _getDeleteConfirmMessage($exhibit)
     {
-        return __('This will permanently delete the entire exhibit "%s"'
+        return __('This will permanently delete the entire story "%s"'
             .' and all its pages.', $exhibit->title);
     }
 

@@ -1,6 +1,6 @@
 <?php
     queue_js_file(array('vendor/jquery.nestedSortable', 'navigation'));
-    $title = __('Edit Exhibit "%s"', $exhibit->title);
+    $title = __('Edit Story "%s"', $exhibit->title);
 
     echo head(array('title' => html_escape($title), 'bodyclass' => 'exhibits'));
 ?>
