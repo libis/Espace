@@ -1465,11 +1465,26 @@ ul.title-list {
 /* @group ----- Collections/Show ----- */
 .collections .item-img {
   float: left;
-  margin: 0 1.5em 0 0;
+  padding: 1em;
+  margin:0;
+  width:25%;
 }
+
+.collection-images{
+    clear:both;
+    overflow:auto;
+    border-top:1px solid #eee;    
+    border-bottom:1px solid #eee;
+}
+
+.link-to-meta{
+    font-style:italic;
+    font-size:1.2em;
+    text-decoration:underline;
+}
+
 .collections .item-img a {
   display: block;
-  height: 7em;
 }
 .collections .item-img img {
   height: 100%;
@@ -1478,9 +1493,6 @@ ul.title-list {
 
 .collections .item {
   overflow: hidden;
-  border-color: #eee;
-  border-top-width: 0.08333em;
-  border-top-style: solid;
   padding-top: -0.08333em;
   margin-top: 1.5em;
 }
