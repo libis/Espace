@@ -8,6 +8,13 @@ require_once 'Zend/Service/Exception.php';
 
 class LibcoService {
 
+    public $db;
+
+    function __construct()
+    {
+        $this->db = get_db();
+    }
+
     public function prepareUrl($searchType){
         $serverUrl = get_option('libco_server_url');
         $urlPath = get_option('libco_url_path');
@@ -36,12 +43,15 @@ class LibcoService {
 
 
     public function search($qParameters, $sources, $page){
+
+        //$filters = array(array('filterID' => 'year', 'values' => array('1966','1966')));
+        $filters = array();
         $reqBody = array(
             "searchTerm" => $qParameters,
             "page" => $page,
             "pageSize" => 100,
-            "source" => $sources
-
+            "source" => $sources,
+            "filters" => $filters
         );
         $response = $this->makeRequest("general", $reqBody);
         $response = json_decode($response, true);
@@ -76,6 +86,42 @@ class LibcoService {
     }
 
     /**
+     * @param null $userId user id to fetch a particular user's collections
+     * @return array
+     */
+    public function getCollectionList($userId=null){
+        $collections = array();
+
+        $options = array();
+        if(!empty($userId))
+            $options = array('owner_id' => current_user()->id);
+
+        $collectionTable = $this->db->getTable('Collection');
+        $userCollections = $collectionTable->findBy($options);
+
+        foreach($userCollections as $collection){
+            $collectionTitle = metadata($collection, array("Dublin Core", "Title"));
+
+            // skip if a collection is without title
+            if(empty($collectionTitle))
+                continue;
+
+            /*
+               skip if
+                    1. a collection with same id already exists in the list
+                    2. skip if a collection with same name already exists in the list
+            */
+            $key = array_search($collectionTitle, $collections);
+            if(array_key_exists($collection->id, $collections) || !empty($key))
+                continue;
+
+            $collections [$collection->id.','.$collectionTitle] = $collectionTitle;
+        }
+        asort($collections); // sort collection array
+        return $collections;
+    }
+
+    /**
      * Prepare and make http request.
      * @param $requestType
      * @param $requestBody
@@ -91,11 +137,17 @@ class LibcoService {
             return json_encode(array('error' => 'Error in preparing http request.'));
         }
 
+        $requestConfig = array(
+            'adapter'    => 'Zend_Http_Client_Adapter_Proxy',
+            'proxy_host' => get_option('libco_server_proxy'),
+            'timeout' => 900
+        );
+
         $restClient = new Zend_Rest_Client();
         $httpClient = $restClient->getHttpClient();
         $httpClient->resetParameters();
         $httpClient->setUri($request['url']);
-        $httpClient->setConfig(array('timeout' => 900)); // Proxy information should be provide here
+        $httpClient->setConfig($requestConfig);
         $httpClient->setHeaders('Content-Type', 'application/json');
         $httpClient->setRawData(json_encode($requestBody));
         $response = $httpClient->request($request['type']);

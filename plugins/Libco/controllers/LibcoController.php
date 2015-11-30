@@ -38,7 +38,7 @@ class Libco_LibcoController extends Omeka_Controller_AbstractActionController{
                     Zend_Registry::set('pagination', array(
                         'page' => $this->getCurrentPage(),
                         'per_page' => 100,
-                        'total_results' => $result['totalResults'],
+                        'total_results' => $result['totalResults']
                     ));}
                 $this->view->assign($result);
             }
@@ -58,5 +58,5 @@ class Libco_LibcoController extends Omeka_Controller_AbstractActionController{
 
         return $currentPage;
     }
-
+    
 }

@@ -28,7 +28,6 @@ class LibcoPlugin extends Omeka_Plugin_AbstractPlugin {
     {
         $acl = $args['acl'];
         $acl->addResource('user');
-
     }
 
     public function __construct()
@@ -41,6 +40,7 @@ class LibcoPlugin extends Omeka_Plugin_AbstractPlugin {
      */
     public function hookInstall()
     {
+
     }
 
     public function hookUpgrade($args)
