@@ -12,11 +12,16 @@ class ImportRecord {
     public $userId;
     public $collectionName;
     public $collectionId;
+    public $collectionAdded;
+    public $addToExistingCollection;
+    public $addToExistingCollectionId;
     public $messages = array();
 
     function __construct()
     {
         $this->db = get_db();
+        $this->collectionAdded = false;
+        $this->addToExistingCollection;
     }
 
     function importRecords($dataToImport){
@@ -24,8 +29,10 @@ class ImportRecord {
         /* Create collection. */
         if(!empty($this->collectionName)){
             $isPublicCollection = 1;    // by default collection is public
-            $isFeaturedCollection = 0;	// by default collection is not featured
+            $isFeaturedCollection = 0;  // by default collection is not featured
             $this->addCollection($isPublicCollection, $isFeaturedCollection);
+            if(!$this->collectionAdded)
+                return;
         }
 
         $counter = 0;
@@ -66,17 +73,25 @@ class ImportRecord {
 
     function addCollection($isPublicCollection, $isFeaturedCollection){
         $message = "";
-        //Check if collection exists, if yes, add a random string to make it unique.
+        //Check if collection exists
         $collectionExists = $this->collectionExists($this->collectionName);
-        if($collectionExists){
-            $message = __("Collection '%s' already exists. ", $this->collectionName);
-            $time = round(microtime(true) * 1000);
-            $this->collectionName .= substr($time, 0, strlen($time)/2);
-
+        // If collection exists and it is an add to existing collection request, proceed,
+        // otherwise return with an error.
+        if(!$this->addToExistingCollection && $collectionExists){
+            $this->messages[] = __("Collection '%s' already exists. Please choose another name or select add to
+            existing collection option.", $this->collectionName);
+            return;
         }
 
-        /* By default it is not a featured and not a public collection. */
-        $collection = $this->db->insert("Collection", array('public' => $isPublicCollection, 'featured' => $isFeaturedCollection, 'added' => date('Y-m-d G:i:s'), 'owner_id' => $this->userId));
+        // Add to existing collection, collection id and name already known
+        if($this->addToExistingCollection && !empty($this->addToExistingCollectionId) && !empty($this->collectionName)){
+            $collectionTable = $this->db->getTable('Collection');
+            $retCollection = $collectionTable->find($this->addToExistingCollectionId);
+            $collection = $retCollection->id;
+        }
+        else
+            $collection = $this->db->insert("Collection", array('public' => $isPublicCollection, 'featured' => $isFeaturedCollection, 'added' => date('Y-m-d G:i:s'), 'owner_id' => $this->userId));
+
         if(!empty($collection)){
             $this->collectionId = $collection;
             $elementId = $this->getElementId("Title", "Dublin Core");
@@ -85,7 +100,11 @@ class ImportRecord {
                     array('record_id' => $collection, 'record_type' => 'Collection',
                         'element_id' => $elementId, 'text' => $this->collectionName, 'html' => true));
 
-                $this->messages[] = __("%s A new collection '%s 'has been created.",$message, $this->collectionName);
+                $this->collectionAdded = true;
+                if($this->addToExistingCollection)
+                    $this->messages[] = __("Items added to the existing collection  '%s '.", $this->collectionName);
+                else
+                    $this->messages[] = __("Items added to a new collection '%s '.", $this->collectionName);
             }
 
         }
@@ -156,8 +175,7 @@ class ImportRecord {
         $file_name = round(microtime(true) * 1000).'.jpg';
         $image_path = $storage->getTempDir().'/'.$file_name;
         if(!empty($url)){
-            //$context_array = array('http'=>array('proxy'=>'icts-http-gw.cc.kuleuven.be:8080','request_fulluri'=>true));
-            $context_array = array();
+            $context_array = array('http'=>array('proxy'=>get_option('libco_server_proxy'),'request_fulluri'=>true));
             $context = stream_context_create($context_array);
             $imageData = file_get_contents($url,false,$context);
             file_put_contents($image_path,$imageData);

@@ -39,6 +39,7 @@ $formAttributes = array(
             <?php echo $this->formButton('', __('Search'), array('type' => 'submit')); ?>
         </td>
     </tr>
+    <tr><td><a href="<?php echo url('espaceapisearch'); ?>"><?php echo __("Search Help"); ?></a></td></tr>
 </table>
 
 </form>

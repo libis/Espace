@@ -32,8 +32,18 @@ endif;
 
         $importer = new ImportRecord();
         $importer->userId = $userId;
+
+        // import to a new collection
         if(isset($_POST['chbcollection'], $_POST['txtncollectionname']))
             $importer->collectionName =  $_POST['txtncollectionname'];
+
+        // import to an existing collection
+        if(isset($_POST['chbexistingcollection'], $_POST['existingcollections'])){
+            $collArray = explode(',', $_POST['existingcollections']);
+            $importer->addToExistingCollectionId = $collArray[0];
+            $importer->collectionName = $collArray[1];
+            $importer->addToExistingCollection = true;
+        }
 
         $response = $importer->importRecords($_POST['eurecords']);
         if(!empty($importer->messages) && is_array($importer->messages)){
@@ -51,13 +61,18 @@ endif;
 
     <?php elseif ($totalResults): ?>
     <?php echo pagination_links();?>
+    <?php
+        // fetch a list of current user collections
+        $lcService = new LibcoService();
+        $usercollections = $lcService->getCollectionList(current_user()->id);
+    ?>
 
     <table id="search-results">
         <form method="post" class="ajax" id="main">
             <thead>
             <tr>
                 <td colspan="2">
-                    <input type="submit" name="btnsubmit" value="Add to Items">
+                    <input type="submit" name="btnsubmit" value="Import Items">
                 </td>
                 <td>
                     <table>
@@ -69,6 +84,12 @@ endif;
                             <td>
                                 <input type="text" name="txtncollectionname" disabled>
                             </td>
+                        </tr>
+                        <tr>
+                            <td style="align-content:center">
+                                <label></label><input type="checkbox" name="chbexistingcollection"> <?php echo __("Add to Existing Collection"); ?> </label>
+                            </td>
+                            <td> <?php echo $this->formSelect('existingcollections', 'Existing Collections', array('class' => 'existing-element-drop-down', 'disabled' => 1),$usercollections, array()); ?> </td>
                         </tr>
                     </table>
                 </td>
@@ -105,14 +126,15 @@ endif;
                             ?>
                         </td>
                         <td>
+                            <div id="imag-div">
                             <?php
                                 $image = current($data['thumb']);
                                 if (!empty($image) && $image != "null"): ?>
-                                    <img src="<?php echo current($data['thumb']); ?>"  height="42" width="42"  alt="" >
+                                    <img src="<?php echo current($data['thumb']); ?>" height="90" width="90" alt="" onerror="this.style.display='none';">
                             <?php endif ?>
-
+                            </div>
                         </td>
-                        <td>
+                        <td style="vertical-align: middle;">
                             <?php echo "<a target = '_blank' href='$url'>$title</a><br>"; ?>
                         </td>
                     </tr>
@@ -124,7 +146,7 @@ endif;
             ?>
             <tr>
                 <td colspan="3">
-                    <input type="submit" name="btnsubmit" value="Add to Items">
+                    <input type="submit" name="btnsubmit" value="Import Items">
                 </td>
             </tr>
             </tbody>
@@ -152,14 +174,30 @@ endif;
             $(".cbselecctall").prop("checked", false);
         });
 
-
+        // enable/disable new collection name text box
         $("input[name='chbcollection']").click(function(event) {  //on click
             if(this.checked) { // check select status
                 $( "input[name='txtncollectionname']").val('');
                 $( "input[name='txtncollectionname']" ).prop( "disabled", false );
+                // disable existing collection option
+                $( "select[name='existingcollections']" ).prop( "disabled", true );
+                $("input[name='chbexistingcollection']").prop("checked", false);
             }else{
                 $( "input[name='txtncollectionname']").val('');
                 $( "input[name='txtncollectionname']" ).prop( "disabled", true );
+            }
+        });
+
+        // enable/disable collection list drop down
+        $("input[name='chbexistingcollection']").click(function(event) {  //on click
+            if(this.checked) { // check select status
+                $( "select[name='existingcollections']" ).prop( "disabled", false );
+                //disable new collection option
+                $( "input[name='txtncollectionname']").val('');
+                $( "input[name='txtncollectionname']" ).prop( "disabled", true );
+                $("input[name='chbcollection']").prop("checked", false);
+            }else{
+                $( "select[name='existingcollections']" ).prop( "disabled", true );
             }
         });
 
