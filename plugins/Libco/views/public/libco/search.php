@@ -63,10 +63,14 @@ endif;
     <?php echo pagination_links();?>
     <?php
         // fetch a list of current user collections
+    $currentUser = current_user();
+    $usercollections = array();
+    if(isset($currentUser)){
         $lcService = new LibcoService();
         $usercollections = $lcService->getCollectionList(current_user()->id);
-    ?>
+    }
 
+    ?>
     <table id="search-results">
         <form method="post" class="ajax" id="main">
             <thead>
@@ -85,12 +89,14 @@ endif;
                                 <input type="text" name="txtncollectionname" disabled>
                             </td>
                         </tr>
+                        <?php if(!empty($usercollections)): ?>
                         <tr>
                             <td style="align-content:center">
                                 <label></label><input type="checkbox" name="chbexistingcollection"> <?php echo __("Add to Existing Collection"); ?> </label>
                             </td>
                             <td> <?php echo $this->formSelect('existingcollections', 'Existing Collections', array('class' => 'existing-element-drop-down', 'disabled' => 1),$usercollections, array()); ?> </td>
                         </tr>
+                        <?php endif; ?>
                     </table>
                 </td>
             </tr>
