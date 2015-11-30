@@ -1070,11 +1070,10 @@ ul.title-list {
 
 .item-file a {
   display: block;
-  height: 9em;
 }
 .item-file a img {
   height: 100%;
-  width: auto;
+  max-width:100%;
 }
 
 /* Tags Classes */

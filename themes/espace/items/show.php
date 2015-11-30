@@ -1,16 +1,15 @@
 <?php echo head(array('title' => metadata('item', array('Dublin Core', 'Title')),'bodyclass' => 'items show')); ?>
 <div id="primary">
     <h1><?php echo metadata('item', array('Dublin Core','Title')); ?></h1>
-
+    
+    <div id="item-images">
+         <?php echo files_for_item(array('imageSize'=>'fullsize')); ?>
+    </div>
+    
     <!-- Items metadata -->
     <div id="item-metadata">
         <?php echo all_element_texts('item'); ?>
-    </div>
-
-    <h3><?php echo __('Files'); ?></h3>
-    <div id="item-images">
-         <?php echo files_for_item(); ?>
-    </div>
+    </div>  
 
    <?php if(metadata('item','Collection Name')): ?>
       <div id="collection" class="element">
