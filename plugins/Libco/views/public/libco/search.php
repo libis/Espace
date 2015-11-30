@@ -126,13 +126,15 @@ endif;
                             ?>
                         </td>
                         <td>
+                            <div id="imag-div">
                             <?php
                                 $image = current($data['thumb']);
                                 if (!empty($image) && $image != "null"): ?>
-                                    <img src="<?php echo current($data['thumb']); ?>"  height="42" width="42"  alt="" >
+                                    <img src="<?php echo current($data['thumb']); ?>" height="90" width="90" alt="" onerror="this.style.display='none';">
                             <?php endif ?>
+                            </div>
                         </td>
-                        <td>
+                        <td style="vertical-align: middle;">
                             <?php echo "<a target = '_blank' href='$url'>$title</a><br>"; ?>
                         </td>
                     </tr>
