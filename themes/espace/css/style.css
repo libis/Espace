@@ -320,6 +320,15 @@ form button {
     color: #000;
 }
 
+#imag-div {
+    width: 110px;
+    height: 110px;
+    padding: 10px;
+    align-content: space-around;
+    border: 1px solid gray;
+    margin-right: 5px;
+}
+
 #advanced-search {
   width: 30px;
   right: 0;
