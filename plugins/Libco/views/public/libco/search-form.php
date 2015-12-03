@@ -12,7 +12,7 @@ $formAttributes = array(
 <div><?php echo flash(); ?></div>
 
 <div id="libco-search-box">
-    <div class="field">
+    <div class="field"> 
         <?php echo $this->formText('q', $query, array('title' => __('Search keywords'), 'size' => 40, 'placeholder' => 'Search...')); ?>
         <?php echo $this->formButton('', __('Search'), array('type' => 'submit')); ?>
     </div> 
