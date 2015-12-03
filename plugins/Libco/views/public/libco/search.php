@@ -68,6 +68,7 @@ endif;
     if(isset($currentUser)){
         $lcService = new LibcoService();
         $usercollections = $lcService->getCollectionList(current_user()->id);
+    }    
     ?>
     
     <h3>Add items to a collection?</h3>
@@ -98,10 +99,10 @@ endif;
             </thead>
             <tbody>
 
-            <?php foreach ($records as $source => $items):?>
+            <?php foreach ($records as $source => $items): ?>
                 <tr><td colspan=4><h2><?php echo $source."(".sizeof($items).")";?></h2></td></tr>
                 <?php
-                foreach($items as $data){
+                foreach($items as $data):
                     $title = $data['title'];
                     $weblink = $data['url'];
                     $url = $weblink['fromSourceAPI'];
@@ -117,9 +118,9 @@ endif;
                             <div id="imag-div">
                             <?php
                                 $image = current($data['thumb']);
-                                if (!empty($image) && $image != "null"): ?>
+                                if(!empty($image) && $image != "null"):?>
                                     <img src="<?php echo current($data['thumb']); ?>" height="90" width="90" alt="" onerror="this.style.display='none';">
-                            <?php endif ?>
+                                <?php endif;?>
                             </div>
                         </td>
                         <td style="vertical-align: middle;">
@@ -128,16 +129,15 @@ endif;
                         <td></td>
                     </tr>
 
-                <?php
-                }
-            endforeach;
-            ?>
+                <?php endforeach; ?>
+            <?php endforeach;?>
            
             </tbody>
         </form>
     </table>
     <p><input type="submit" name="btnsubmit" value="Import Items"></p>
-<?php endif; ?>
+    <p><i><a class="search-again" href="#libco-search-form">Search again?</a><i></p>
+<?php endif;?>
 </div>
 
 <script>
@@ -188,5 +188,5 @@ endif;
 
     });
 </script>
-<p><i><a class="search-again" href="#libco-search-form">Search again?</a><i></p>
+
 <?php echo foot(); ?>
