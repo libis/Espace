@@ -63,6 +63,9 @@ endif;
     
     <?php
         // fetch a list of current user collections
+    $currentUser = current_user();
+    $usercollections = array();
+    if(isset($currentUser)){
         $lcService = new LibcoService();
         $usercollections = $lcService->getCollectionList(current_user()->id);
     ?>
