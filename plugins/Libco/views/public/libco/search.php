@@ -1,8 +1,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <?php
 require_once LIBCO_DIR."/helpers/ImportRecord.php"
-
 ?>
+
 <?php
 if(empty($totalResults)):
     $totalResults = 0;
@@ -20,7 +20,7 @@ endif;
 
 <?php echo $this->partial('libco/search-form.php', array('query' => $query)); ?>
 
-
+<div id="libco-results">
 <?php
     if(isset($_POST['eurecords'])){
         $currentUser = current_user();
@@ -59,59 +59,44 @@ endif;
 <?php if (!empty($error)): ?>
     <p><strong><?php echo __("Error: {$error}"); ?></strong></p>
 
-    <?php elseif ($totalResults): ?>
-    <?php echo pagination_links();?>
+<?php elseif ($totalResults): ?>
+    
     <?php
         // fetch a list of current user collections
         $lcService = new LibcoService();
         $usercollections = $lcService->getCollectionList(current_user()->id);
     ?>
-
+    
+    <h3>Add items to a collection?</h3>
+    <div class="field">
+        <input type="checkbox" name="chbcollection"> <?php echo __("Create A New Collection"); ?>
+        <input type="text" name="txtncollectionname" placeholder="New Collection Name" disabled>
+    </div>
+    <div class="field">
+        <input type="checkbox" name="chbexistingcollection"> <?php echo __("Add to Existing Collection"); ?>
+        <?php echo $this->formSelect('existingcollections', 'Existing Collections', array('class' => 'existing-element-drop-down', 'disabled' => 1),$usercollections, array()); ?>
+    </div>   
+    <div class="field import-items">
+        <input type="submit" name="btnsubmit" value="Import Items">
+    </div>
+    
     <table id="search-results">
         <form method="post" class="ajax" id="main">
-            <thead>
+            <thead>           
             <tr>
-                <td colspan="2">
-                    <input type="submit" name="btnsubmit" value="Import Items">
-                </td>
-                <td>
-                    <table>
-                        <tr style="padding: 0px">
-                            <td style="align-content:center">
-                                <label></label><input type="checkbox" name="chbcollection"> <?php echo __("Create A New Collection"); ?> </label>
-                            </td>
-                            <td> <?php echo __("New Collection Name"); ?> </td>
-                            <td>
-                                <input type="text" name="txtncollectionname" disabled>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="align-content:center">
-                                <label></label><input type="checkbox" name="chbexistingcollection"> <?php echo __("Add to Existing Collection"); ?> </label>
-                            </td>
-                            <td> <?php echo $this->formSelect('existingcollections', 'Existing Collections', array('class' => 'existing-element-drop-down', 'disabled' => 1),$usercollections, array()); ?> </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-
-            </tr>
-            <tr>
-                <th>
-                    <?php echo __('Selection');?>
-                    <?php echo '<br>'; echo "<input type='checkbox' class='cbselecctall' id='selecctall'>"; ?>
+                <th class="select">                    
+                    <?php echo "<input type='checkbox' class='cbselecctall' id='selecctall'>"; ?>
+                    <?php echo __('Select all');?>
                 </th>
                 <th><?php echo __('');?></th>
                 <th><?php echo __('Title');?></th>
+                <th><?php echo pagination_links();?></th>
             </tr>
             </thead>
             <tbody>
 
-            <?php
-            foreach ($records as $source => $items):
-            ?>
-                <tr><td style="column-span: 3"> <?php echo $source."(".sizeof($items).")"; ?> </td></tr>
+            <?php foreach ($records as $source => $items):?>
+                <tr><td colspan=4><h2><?php echo $source."(".sizeof($items).")";?></h2></td></tr>
                 <?php
                 foreach($items as $data){
                     $title = $data['title'];
@@ -120,7 +105,7 @@ endif;
                     ?>
 
                     <tr>
-                        <td><?php
+                        <td style="vertical-align: middle;"><?php
                             $record_str = base64_encode(serialize($data));
                             echo "<input type='checkbox' class='cbrecord' id='checkboxselect'  value=' . $record_str .' name='eurecords[]'>";
                             ?>
@@ -135,25 +120,22 @@ endif;
                             </div>
                         </td>
                         <td style="vertical-align: middle;">
-                            <?php echo "<a target = '_blank' href='$url'>$title</a><br>"; ?>
+                            <?php echo "<h3><a target = '_blank' href='$url'>$title</a></h3>"; ?>
                         </td>
+                        <td></td>
                     </tr>
 
                 <?php
                 }
-                echo "<br>";
             endforeach;
             ?>
-            <tr>
-                <td colspan="3">
-                    <input type="submit" name="btnsubmit" value="Import Items">
-                </td>
-            </tr>
+           
             </tbody>
         </form>
     </table>
+    <p><input type="submit" name="btnsubmit" value="Import Items"></p>
 <?php endif; ?>
-
+</div>
 
 <script>
     $(document).ready(function() {
@@ -203,5 +185,5 @@ endif;
 
     });
 </script>
-
+<p><i><a class="search-again" href="#libco-search-form">Search again?</a><i></p>
 <?php echo foot(); ?>

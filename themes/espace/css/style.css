@@ -320,15 +320,6 @@ form button {
     margin:0;
 }
 
-#imag-div {
-    width: 110px;
-    height: 110px;
-    padding: 10px;
-    align-content: space-around;
-    border: 1px solid gray;
-    margin-right: 5px;
-}
-
 #advanced-search {
   width: 30px;
   right: 0;
@@ -1471,16 +1462,22 @@ ul.title-list {
 }
 
 /* ----- libco/search ----- */
+#libco-search-box{
+    
+}
 
 #libco-search-form *::-moz-placeholder {
     color: #ff4d4d;
 }
 
+#libco-results *::-moz-placeholder {
+    color: #000;
+}
+
 #libco-search-form ul {
     list-style: none;
     padding:0;
-    margin:0;
-    
+    margin:0;    
     padding-top:5px;
 }
 
@@ -1489,26 +1486,108 @@ ul.title-list {
     text-indent: -.7em;
 }
 
-#libco-search-form li:before {
-    content: "• ";
-    color: red; /* or whatever color you prefer */
+#libco-search-form p { 
+    margin:0;
 }
 
-#libco-search-form input[type="checkbox"]{
+#libco-search-form input[type="checkbox"],#libco-results input[type="checkbox"]{
     margin-right:10px;
     vertical-align: middle;
 }
 
-#libco-search-form label{
+#libco-search-form button{
+    background:#ff4d4d;   
+    color:white;
+}
+
+#libco-search-form label, #libco-results label{
     font-weight:bold;
     font-family: 'Droid sans', sans-serif;
 }
 
-#libco-search-form input[type="text"]{
+#libco-search-form input[type="text"],#libco-results input[type="text"]{
     display:inline;
-    border-color:#ff4d4d;
+    border:2px solid #ff4d4d;
     height:30px;
     padding:3px 5px;
+}
+
+#libco-results input[type="text"]{
+    margin-left:10px;
+    border:1px solid #ddd;
+}
+
+#libco-results{
+    margin-top:20px;
+    padding-top:20px;
+    border-top:1px solid #eee;
+}
+
+.new-collection{
+    margin:5px 0 10px 40px;
+}
+
+.import-items{
+    margin-top:10px;
+}
+
+#libco-results table{
+    font-size:14px;
+}
+
+#libco-results td{
+    border:none;
+}
+
+#libco-results .select{
+    width:110px;
+}
+
+#libco-results th{
+    border-width:1px;
+    border-color:#ff4d4d;
+    font-weight:normal;
+    font-style:italic;
+}
+
+#libco-results .pagination-nav{
+    float:right;
+    text-align:right;
+    width:170px;
+}
+
+#imag-div {
+    width: 110px;
+    height: 110px;
+    padding: 10px;
+    align-content: space-around;
+    border: 1px solid gray;
+    margin-right: 25px;
+}
+
+#libco-results #search-results h2{
+    margin:5px 0;
+    padding:5px;
+    color:#fff;
+    background: #ff4d4d;
+    border-bottom:1px solid #fff;
+}
+
+#libco-results .pagination a{
+    line-height:30px;
+}
+
+#libco-results .pagination-nav ul{
+    margin:0;
+}
+
+#libco-results .pagination-nav li{
+    border:none;
+}
+
+#libco-results .search-again{
+    text-decoration:underline;
+    text-align: right;
 }
 
 /* @end */
