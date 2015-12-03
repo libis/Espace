@@ -593,9 +593,9 @@ function exhibit_builder_items_browse_sql($args)
 function exhibit_builder_items_search()
 {
     $view = get_view();
-    $html = '<div class="field"><div class="two columns alpha">'
+    $html = '<div class="field">'
           . $view->formLabel('exhibit', __('Search by Exhibit'))
-          . '</div><div class="five columns omega inputs">'
+          . '<div class="inputs">'
           . $view->formSelect('exhibit', @$_GET['exhibit'], array(), get_table_options('Exhibit'))
           . '</div></div>';
     echo $html;

@@ -21,7 +21,7 @@ echo head(array(
     ?>
 </div>
 <div id='secondary'>
-    <?php echo simple_pages_navigation();?>
+    <?php echo simple_pages_navigation($simple_pages_page->id);?>
     <?php if(metadata('simple_pages_page', 'title')!='Create your own story'):?>
     <div class="stamp">
         <p><a href='<?php echo url('create-your-own-story');?>'><img class="make-icon" src="<?php echo img('book-icon_white.png');?>"><br>Create your own story</a></p>

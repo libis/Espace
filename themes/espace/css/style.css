@@ -134,6 +134,10 @@ th {
   text-align: left;
 }
 
+input[type=text]{
+    padding-left:5px;
+}
+
 /* -- Links -- */
 a:link, a:visited {
   color: #369;
@@ -314,10 +318,6 @@ form button {
     color: #fff;
     border:2px solid #fff;
     margin:0;
-}
-
-#libco-search-form *::-moz-placeholder {
-    color: #000;
 }
 
 #imag-div {
@@ -1470,6 +1470,47 @@ ul.title-list {
   clear: none;
 }
 
+/* ----- libco/search ----- */
+
+#libco-search-form *::-moz-placeholder {
+    color: #ff4d4d;
+}
+
+#libco-search-form ul {
+    list-style: none;
+    padding:0;
+    margin:0;
+    
+    padding-top:5px;
+}
+
+#libco-search-form li { 
+    padding-left: 1em; 
+    text-indent: -.7em;
+}
+
+#libco-search-form li:before {
+    content: "• ";
+    color: red; /* or whatever color you prefer */
+}
+
+#libco-search-form input[type="checkbox"]{
+    margin-right:10px;
+    vertical-align: middle;
+}
+
+#libco-search-form label{
+    font-weight:bold;
+    font-family: 'Droid sans', sans-serif;
+}
+
+#libco-search-form input[type="text"]{
+    display:inline;
+    border-color:#ff4d4d;
+    height:30px;
+    padding:3px 5px;
+}
+
 /* @end */
 /* @group ----- Collections/Show ----- */
 .collections .item-img {
@@ -2007,6 +2048,7 @@ a:hover
         float:left;
 	margin-right: 3px;
         color:#fff;
+        padding:5px;
 }
 #browse-stories input[type=text]
 {
@@ -2047,7 +2089,7 @@ a:hover
 }
 ::-moz-placeholder
 {
-	color: #000;
+	color: #FFF;
 }
 :-ms-input-placeholder
 {

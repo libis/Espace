@@ -246,8 +246,8 @@ img { border: 0; }
     }
 
     input[type=text], input[type=password] {
-        height: 30px;
-        border: 1px solid #eee;
+        
+        border: 1px solid #ddd;
         -webkit-border-radius: 0;
         -moz-box-radius: 0;
         border-radius: 0;
@@ -256,9 +256,8 @@ img { border: 0; }
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         color: #666666;
-        line-height: 20px;
         margin: 0 0 10px 0;
-        padding: 5px 10px;
+        padding-left: 5px;
     }
 
         input[type=text].big {
@@ -274,17 +273,10 @@ img { border: 0; }
     }
 
         .field label {
-            clear: left;
-            font-weight: bold;
-            float: left;
-            line-height: 1.5em;
-            margin: 0 0 10px 0;
-            min-width: 120px;
-            font-family: 'Droid Sans',sans-serif;
+            
         }
 
         .field select {
-            width: 100%;
             margin-bottom: 10px;
         }
 
@@ -303,7 +295,7 @@ img { border: 0; }
 
 
         .inputs input[type=text], .inputs input[type=password], .inputs textarea {
-            width: 100%;
+           
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
@@ -2250,7 +2242,6 @@ header .container{
 
 .search-entry select {
     min-width: 0;
-    width: 49.5%;
 }
 
 .search-entry input[type=text] {
@@ -2284,7 +2275,7 @@ button.remove_search {
         .collections.show .recent-items li:last-child {
             border-bottom: 0;
         }
-
+.collections #public-featured div.featured{display:none;}
 
 /* Browse Item Types
 ================================================== */
