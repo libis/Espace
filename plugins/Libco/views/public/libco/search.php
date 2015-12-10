@@ -70,7 +70,7 @@ endif;
         $usercollections = $lcService->getCollectionList(current_user()->id);
     }    
     ?>
-    
+    <form method="post" class="ajax" id="main">
     <h3>Add items to a collection?</h3>
     <div class="field">
         <input type="checkbox" name="chbcollection"> <?php echo __("Create A New Collection"); ?>
@@ -80,12 +80,13 @@ endif;
         <input type="checkbox" name="chbexistingcollection"> <?php echo __("Add to Existing Collection"); ?>
         <?php echo $this->formSelect('existingcollections', 'Existing Collections', array('class' => 'existing-element-drop-down', 'disabled' => 1),$usercollections, array()); ?>
     </div>   
+    
     <div class="field import-items">
         <input type="submit" name="btnsubmit" value="Import Items">
     </div>
     
     <table id="search-results">
-        <form method="post" class="ajax" id="main">
+        
             <thead>           
             <tr>
                 <th class="select">                    
@@ -134,10 +135,11 @@ endif;
             <?php endforeach;?>
            
             </tbody>
-        </form>
+       
     </table>
     <p><input type="submit" name="btnsubmit" value="Import Items"></p>
     <p><i><a class="search-again" href="#libco-search-form">Search again?</a><i></p>
+     </form>
 <?php endif;?>
 </div>
 

@@ -41,6 +41,6 @@ $formAttributes = array(
         </div>
     </div>    
 
-        <p><a href="<?php echo url('espaceapisearch'); ?>"><?php echo __("Need help?"); ?></a></p>
+        <p><a target="_blank" href="<?php echo url('espaceapisearch'); ?>"><?php echo __("Need help?"); ?></a></p>
     </form>
 </div>
