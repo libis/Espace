@@ -52,7 +52,10 @@ class ImportRecord {
                 )
                     $isPublic = 1;
 
-                $itemId = $this->addRecord($elementsToAdd, $isPublic, $isFeatured);
+                /* Get the type id to add to the item. Type id is name of the Source where this record was searched. */
+                $itemTypeId = $this->getItemType($recordArray['search_source']);					
+					
+                $itemId = $this->addRecord($elementsToAdd, $isPublic, $isFeatured, $itemTypeId);
                 if(!empty($itemId)) /* Record successfully imported. */
                     $counter++;
                 else                /* It is a valid record but could not be imported. */
@@ -71,6 +74,13 @@ class ImportRecord {
             $this->messages[] = __("Invalid items: %d", $invalidRecords);
     }
 
+    function getItemType($typeName){
+        $itemTypeTable = $this->db->getTable('ItemType');
+        $itemTypeId = $itemTypeTable->findBySql('name = ?', array($typeName), true);
+        if(!empty($itemTypeId->id))
+            return $itemTypeId->id;
+    }
+	
     function addCollection($isPublicCollection, $isFeaturedCollection){
         $message = "";
         //Check if collection exists
@@ -130,12 +140,16 @@ class ImportRecord {
             return true;
     }
 
-    function addRecord($elementsToAdd, $isPublic, $isFeatured){
+    function addRecord($elementsToAdd, $isPublic, $isFeatured, $itemTypeId){
         $insertOptions = array('added' => date('Y-m-d G:i:s'), 'owner_id' => $this->userId, 'public' => $isPublic, 'featured' => $isFeatured);
 
         if(!empty($this->collectionId))
             $insertOptions['collection_id'] =$this->collectionId;
 
+        /* If id of the item type is given add it to the elementToAdd array. */
+        if(!empty($itemTypeId))
+            $insertOptions['item_type_id'] = $itemTypeId;			
+			
         $itemId = $this->db->insert("Item", $insertOptions);
         if(!empty($itemId)){
             $this->addElements($elementsToAdd, 'Item', $itemId);

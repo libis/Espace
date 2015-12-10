@@ -106,6 +106,7 @@ endif;
                     $title = $data['title'];
                     $weblink = $data['url'];
                     $url = $weblink['fromSourceAPI'];
+					$data['search_source'] = $source;   // added to the data array to use source as an item type				
                     ?>
 
                     <tr>
