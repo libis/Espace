@@ -152,6 +152,11 @@ echo item_search_filters();
         <?php endif; ?>
     <?php else: ?>
         <p><?php echo __('The query searched %s items and returned no results.', total_records('Item')); ?> <?php echo __('Would you like to %s?', link_to_item_search(__('refine your search'))); ?></p>
+        <!--libis_start-->
+        <?php if (is_allowed('Items', 'add')): ?>
+            <div class="add-new-link"><p><a class="add-new-item" href="<?php echo html_escape(url('items/add')); ?>"><?php echo __('Add a new item'); ?></a></p></div>
+        <?php endif; ?>
+        <!--libis_end-->		
     <?php endif; ?>
 <?php endif; ?>
 
