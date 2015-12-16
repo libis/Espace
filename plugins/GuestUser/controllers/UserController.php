@@ -121,8 +121,15 @@ class GuestUser_UserController extends Omeka_Controller_AbstractActionController
             return;
         }
 
-        $user->setPassword($_POST['new_password']);
-
+        //libis_start
+        /*
+         * Account deactivation and password change cannot be performed together.
+         * Only change to new password if it is not an deactivation request.
+         * */
+        if($form->getElement('account_status')->getValue() != 0)
+            $user->setPassword($_POST['new_password']);
+        //libis_end
+        
         //libis_start
         /* Get the value of the active checkbox on update account page. */
         $user->active = $form->getElement('account_status')->getValue();
@@ -134,6 +141,9 @@ class GuestUser_UserController extends Omeka_Controller_AbstractActionController
             $user->save($_POST);
 
             //libis_start
+            $this->_helper->flashMessenger(__("Account updated successfully."), 'success');
+            //libis_end
+
             /* Logout after user account deactivated. */
             if(!$form->getElement('account_status')->getValue())
                 $this->redirect('users/logout');
