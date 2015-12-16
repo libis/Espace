@@ -646,7 +646,7 @@ form button {
 }
 
 #search-form-exhibit button{
-    border-color:#ff4d4d;
+    border:2px solid #ff4d4d;    
     color: #ff4d4d;
     display:inline;
     padding:3px;
@@ -1025,7 +1025,7 @@ ul.title-list {
   width: 100%;
 }
 
-.browse button {
+.browse button; {
     border:2px solid #FF4D4D;
     color: #FF4D4D;
     margin:0;
