@@ -50,7 +50,7 @@
             <p><a href='<?php echo url('create-your-own-story');?>'><img class="make-icon" src="<?php echo img('book-icon_white.png');?>"><br>Create your own story</a></p>
         </div>
         
-        <?php if(is_array($stories)):?>
+        <?php if(count($stories)>0):?>
             <?php foreach($stories as $story):?>
                 <?php 
                     $class='';
@@ -77,7 +77,7 @@
                 </div>
             <?php endforeach;?>
         <?php else:?>
-            <?php echo $stories;?>
+            <p><?php echo __('No stories were found.'); ?></p>
         <?php endif;?>
             
         
