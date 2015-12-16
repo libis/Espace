@@ -39,7 +39,7 @@ $sortLinks[__('Date Added')] = 'added';
 <div class="item hentry">
     <?php if (metadata('item', 'has thumbnail')): ?>
     <div class="item-img">
-        <?php echo link_to_item(item_image('square_thumbnail')); ?>
+        <?php echo link_to_item(item_image('thumbnail')); ?>
     </div>
     <?php endif; ?><!-- end class="item-meta" -->
     <div class="item-meta">

@@ -600,14 +600,9 @@ form button {
 .pagination ul {
   margin-left: 0;
 }
-.pagination li {
-  border: solid #e7e7e7;
-  border-width: 1px 0 1px 1px;
+.pagination li {  
   float: left;
   list-style-type: none;
-}
-.pagination li:last-of-type {
-  border-right: 1px solid #e7e7e7;
 }
 .pagination a, .pagination form {
   text-decoration: none;
@@ -645,12 +640,13 @@ form button {
     
 }
 
-#search-form-exhibit button{
+#search-form-exhibit button, .browse button{
     border:2px solid #ff4d4d;    
     color: #ff4d4d;
     display:inline;
     padding:3px;
     height:auto;
+    margin:0;
 }
 
 #search-form-exhibit input{
@@ -1034,7 +1030,7 @@ ul.title-list {
 .browse input[type="text"] {
     background: none repeat scroll 0 0 #fff;
     border: 1px solid #FF4D4D;
-    height:30px;
+    height:31px;
     color: #FF4D4D;
     display: block;
     float: left;
@@ -1132,7 +1128,7 @@ ul.title-list {
 /* @end */
 /* @group ----- Items/Browse ----- */
 .browse .item h2 {
-  margin:0;
+  margin:0 0 10px 0;
   font-weight:normal;
   font-style:italic;
   line-height:20px;
@@ -1193,7 +1189,6 @@ ul.title-list {
 }
 
 .browse .item-meta {
-  float: left;
   display: inline;
   margin-left: 10px;
   margin-right: 10px;
