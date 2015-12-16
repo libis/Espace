@@ -34,7 +34,8 @@
   <form id="search-form" method="get" action="" name="search-form">
     <input id="query" type="text" placeholder="Search..." title="Search" value="" name="query">
     <input type="hidden" name="record_types[]" value="Exhibit">
-    <input type="hidden" name="query_type" value="exact_match">
+    <input type="hidden" name="record_types[]" value="ExhibitPage">
+    <input type="hidden" name="query_type" value="keyword">
     <button id="submit_search" value="Search" type="submit" name="submit_search">Search</button>
   </form>
     <div class="filter-stories browse-all-stories"><a href="<?php echo url('exhibits');?>">browse all stories</a></div>  

@@ -8,12 +8,16 @@ function libis_search_exhibits($params){
         return $records;
     endif;
     
+    $records = $db->getTable('SearchText')->findBy($params);    
+        
+    $exhibits= array();
+    foreach($records as $record):
+        if($record['record_type']='Exhibit'):
+            $exhibit = get_record_by_id('Exhibit', $record['record_id']);
+            $exhibits[$record['record_id']]=$exhibit;
+        endif;
+    endforeach;
     
-    $records = $db->getTable('Exhibit')->findBy($params);    
-    if(!$records):
-        return 'No stories were found';
-    endif;
-    
-    return $records;    
+    return $exhibits;
 }
 
