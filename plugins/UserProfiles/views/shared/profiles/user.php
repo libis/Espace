@@ -59,6 +59,13 @@ echo nav($typesNav, 'user_profiles_types_user_edit');
             <?php if($type): //private types won't show up! ?>
             <h2><?php echo html_escape($type->label); ?></h2>
             <?php endif; ?>
+			
+            <!--libis_start-->
+            <!-- Do not show profile information to other users if it is set to private. -->
+            <?php if($userprofilesprofile->public === 0 && $userprofilesprofile->owner_id != current_user()->id): ?>
+                <p><?php echo __("No public information of the user available."); ?></p>
+            <?php else: ?>			
+			
             <?php foreach($userprofilesprofile->getElements() as $element):?>
             <div class="element">
                 <div class="field two columns alpha">
@@ -90,6 +97,10 @@ echo nav($typesNav, 'user_profiles_types_user_edit');
             </div><!-- end element -->
             <?php endforeach; ?>
         </div><!-- end element-set -->
+		
+		<?php endif; ?>
+		<!--libis_end-->		
+		
         <?php fire_plugin_hook('user_profiles_user_page', array('user'=>$user, 'view'=>$this) ); ?>
     <?php endif; ?>
     </section>
