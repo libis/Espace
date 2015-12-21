@@ -124,6 +124,9 @@ class CommentingPlugin extends Omeka_Plugin_AbstractPlugin
         $db = get_db();
         $sql = "DROP TABLE IF EXISTS `$db->Comment`";
         $db->query($sql);
+
+        /* Remove plugin show/hide options from database. */
+        $this->removePluginHideConfiguration();
     }
 
     public function hookPublicHead()
@@ -250,6 +253,20 @@ class CommentingPlugin extends Omeka_Plugin_AbstractPlugin
 
     public function filterAdminNavigationMain($tabs)
     {
+        /*
+         * If this plugin is configured to be hidden for the current user's role then do not add it to
+         * the navigation links ($navLinks)
+         * */
+        $user = current_user();
+        $currentClass = get_class() ;
+        if(isset($user, $currentClass)){
+            $pluginName = str_replace('plugin', '', strtolower($currentClass));
+            $hide = get_option(strtolower($pluginName.'_'.$user->role.'_hide'));
+            if($hide == 1)
+                return $tabs;
+        }
+
+
         if(is_allowed('Commenting_Comment', 'update-approved') ) {
             $tabs[] = array('uri'=> url('commenting/comment/browse'), 'label'=>__('Comments') );
         }
@@ -313,5 +330,19 @@ class CommentingPlugin extends Omeka_Plugin_AbstractPlugin
                 'record_id' => $record->id
                 );
         return get_db()->getTable('Comment')->count($params);
+    }
+
+    /**
+     * Remove show/hide plugin configurations.
+     */
+    public function removePluginHideConfiguration(){
+        $userRoles = get_user_roles();
+        $currentClass = get_class() ;
+        if(isset($userRoles, $currentClass)){
+            $pluginName = str_replace('plugin', '', strtolower($currentClass));
+            foreach($userRoles as $role){
+                delete_option(strtolower($pluginName."_".$role."_hide"));
+            }
+        }
     }
 }
