@@ -12,7 +12,7 @@ function libis_search_exhibits($params){
         
     $exhibits= array();
     foreach($records as $record):
-        if($record['record_type']='Exhibit'):
+        if($record['record_type']=='Exhibit'):
             $exhibit = get_record_by_id('Exhibit', $record['record_id']);
             $exhibits[$record['record_id']]=$exhibit;
         endif;
