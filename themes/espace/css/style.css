@@ -168,21 +168,7 @@ header:after {
   clear: both;
   visibility: hidden;
 }
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-  header {
-    width: 768px;
-  }
-}
-@media only screen and (max-width: 767px) {
-  header {
-    width: 300px;
-  }
-}
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-  header {
-    width: 420px;
-  }
-}
+
 
 #header-image {
   position: relative;
@@ -269,6 +255,16 @@ header:after {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+@media only screen and (max-width: 300px) {
+    #browse-stories input[type=text] {
+      padding: 3px;
+      margin-bottom:10px;
+      width: 140px;
+  }
+}
+
+
 button {
   background:none;
   color: #FFF; 
@@ -304,13 +300,12 @@ form button {
 }
 
 #browse-stories #search-form{
-    
+    margin-right: 30px;
     float:left;
 }
 
 .browse-all-stories{
     float:left;
-    margin-left:30px;
     margin-top:4px;
 }
 
@@ -658,7 +653,12 @@ form button {
 
 #home #content {
     width:100%;
-    background: #FF4D4D;
+    background: #FF4D4D;    
+    background:url(../images/boats.jpeg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;    
     padding: 8% 0;
     color:#fff;
     overflow:hidden;
@@ -731,6 +731,11 @@ form button {
   #home #primary {
     margin: 0;
   }
+  
+  #header-image-container{
+    width:100%;
+    margin:0 auto;
+}
 }
 @media only screen and (min-width: 768px) and (max-width: 959px) {
   #home #primary {
@@ -811,28 +816,57 @@ form button {
     float:left;
 }
 
-
-
-
 @media only screen and (max-width: 767px) {
   #home #primary {
     margin: 0;
   }
+  
+  .grid-sizer, .story{
+    width: 18%;
+  }
+
+  .gutter-sizer { 
+    width: 2%;
+  }
 }
-@media only screen and (min-width: 768px) and (max-width: 959px) {
+@media only screen and (min-width: 768px) and (max-width: 1280px) {
   #home #primary {
     width: 364px;
   }
+  
+  .grid-sizer, .story{
+    width: 31%;
+    }
+
+    .gutter-sizer { 
+        width: 4%;
+    }
 }
 @media only screen and (max-width: 767px) {
   #home #primary {
     width: 300px;
   }
+  
+  .grid-sizer, .story{
+    width: 100%;
+    }
+
+    .gutter-sizer { 
+        width: 2%;
+    }
 }
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   #home #primary {
     width: 420px;
   }
+  
+  .grid-sizer, .story{
+    width: 48%;
+    }
+
+    .gutter-sizer { 
+        width: 4%;
+    }
 }
 
 .story .words{
@@ -1964,8 +1998,6 @@ footer nav + p {
   #browse-stories {
     clear: both;
     width: 100%;
-    margin-top: 1.5em;
-    margin-bottom: 0em;
   }
 
   /* @end */
@@ -1997,27 +2029,12 @@ footer nav + p {
     visibility: hidden;
   }
 }
-@media only screen and (max-width: 768px) and (min-width: 768px) and (max-width: 959px) {
-  #mobile-nav {
-    width: 768px;
-  }
-}
-@media only screen and (max-width: 768px) and (max-width: 767px) {
-  #mobile-nav {
-    width: 300px;
-  }
-}
-@media only screen and (max-width: 768px) and (min-width: 480px) and (max-width: 767px) {
-  #mobile-nav {
-    width: 420px;
-  }
-}
+
 @media screen and (max-width: 768px) {
   #mobile-nav ul {
     position: absolute;
     z-index: 199;
     background: #fafafa;
-    border-bottom: 1px solid #ccc;
     width: 100%;
     padding-left: 0;
     margin: 0;
@@ -2032,7 +2049,7 @@ footer nav + p {
     text-decoration: none;
     display: block;
     padding: 10px;
-    border: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     border-width: 1px 1px 0 1px;
   }
   #mobile-nav a:hover {
@@ -2070,10 +2087,6 @@ footer nav + p {
   #home #primary, #home #secondary {
     padding: 0;
     max-width: 100%;
-  }
-
-  #home #primary > div:last-of-type {
-    border-bottom: 1px solid #ccc;
   }
 
   /* @end */
@@ -2477,10 +2490,6 @@ a#advanced-search
 	#footer-content
 	{
 		width: 100%;
-	}
-	#mobile-nav
-	{
-		margin-bottom: 30px;
 	}
 	#mobile-nav a
 	{

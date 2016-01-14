@@ -15,22 +15,13 @@
         <?php fire_plugin_hook('public_home', array('view' => $this)); ?>
     </div><!-- end primary -->
 
-    <div id="secondary">
-         
-    </div><!-- end secondary -->
+   
 </div>    
- <?php echo theme_header_image(); ?>
+ 
 </div><!-- end content -->
 
 
 <div id="browse-stories">  
-  <div id="filters" class="button-group">
-    <div class="filter-stories">filter stories &#9755;</div>  
-    <button data-filter="*">all</button>
-    <button data-filter=".new">new</button>
-    <button data-filter=".popular">popular</button>
-    <button data-filter=".featured">featured</button>
-  </div>
   <form id="search-form" method="get" action="" name="search-form">
     <input id="query" type="text" placeholder="Search..." title="Search" value="" name="query">
     <input type="hidden" name="record_types[]" value="Exhibit">
@@ -96,10 +87,6 @@
               }
 
             });
-            jQuery('#filters').on( 'click', 'button', function() {
-                var filterValue = jQuery(this).attr('data-filter');
-                $container.isotope({ filter: filterValue });
-              });
         });
     });
 
