@@ -27,11 +27,11 @@ class Libco_LibcoController extends Omeka_Controller_AbstractActionController{
             $result = $libcoService->search($searchQuery, $sources, $this->getCurrentPage());
             if(!empty($result)){
                 // 'api/advancedsearch'
-                if(empty($result['responces'])){
+                if(empty($result['responses'])){
                     $this->_helper->flashMessenger('Search result not returned from the server.',  'error');
                     return;
                 }
-                $result = $result['responces'];
+                $result = $result['responses'];
                 $result = $libcoService->normalizeResult($result, $searchQuery);
 
                 if ($result['totalResults']) {
