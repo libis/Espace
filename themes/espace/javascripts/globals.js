@@ -34,7 +34,7 @@ if (!Omeka) {
     
     Omeka.dropDown = function(){
         var dropdownMenu = $('#mobile-nav');
-        dropdownMenu.prepend('<a class="menu">Menu</a>');
+        dropdownMenu.prepend('<a class="menu"><i class="fa fa-bars"></i></a>');
         //Hide the rest of the menu
         $('#mobile-nav .navigation').hide();
 

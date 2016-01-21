@@ -1986,7 +1986,7 @@ footer nav + p {
     max-width: 50%;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   /* @group ----- Generic HTML elements ----- */
   input[type=text], input[type=password], textarea {
     width: 100%;
@@ -2001,12 +2001,6 @@ footer nav + p {
   }
 
   /* @end */
-  /* @group ----- Header ----- */
-  #site-title {
-    width: 100%;
-  }
-
-  /* @end */
   /* @group ----- Navigation ----- */
   #primary-nav {
     display: none;
@@ -2014,11 +2008,11 @@ footer nav + p {
 
   #mobile-nav {
     display: block;
-    clear: both;
     position: relative;
     margin: 0 auto;
     padding: 0;
-    width: 960px;
+    width: 200px;
+    float:left;
     zoom: 1;
   }
   #mobile-nav:after {
@@ -2030,34 +2024,50 @@ footer nav + p {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
+  #admin-bar-public{
+      width:100%;
+      border-top: 1px solid #fff;
+      border-bottom: 1px solid #fff;
+      padding:10px 0;
+  }
+  
+  #admin-bar-public ul{
+      float:right;
+  }
+}
+
+@media screen and (max-width: 1200px) {
   #mobile-nav ul {
     position: absolute;
     z-index: 199;
-    background: #fafafa;
-    width: 100%;
+    background: #ff4d4d;
     padding-left: 0;
     margin: 0;
   }
+  
   #mobile-nav li {
     text-align: left;
     display: block;
     overflow: hidden;
-    width: 100%;
+    float:none;
   }
   #mobile-nav a {
     text-decoration: none;
     display: block;
     padding: 10px;
-    border-bottom: 1px solid #ccc;
-    border-width: 1px 1px 0 1px;
+    color:#fff;
   }
   #mobile-nav a:hover {
-    background: #fff;
   }
   #mobile-nav > a:first-child {
-    background: #fafafa;
+    background: #ff4d4d;
     cursor: pointer;
+    color:#fff;
+    font-size:1.6em;
+    height:52px;
+    padding:15px;
+    width:52px;
   }
   #mobile-nav li.current a {
     background: #fff;
@@ -2498,11 +2508,7 @@ a#advanced-search
 }
 @media only screen and (max-width: 767px)
 {
-	#site-title
-	{
-		float: none;
-		text-align: center;
-	}
+	
 	div#header-image-holder .held, div#header-image-holder p
 	{
 		max-width: 100%;

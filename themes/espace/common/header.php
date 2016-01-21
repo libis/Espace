@@ -34,6 +34,8 @@
     <?php queue_js_file('globals'); ?>
     <?php echo head_js(); ?>
     
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
     <link href='http://fonts.googleapis.com/css?family=Lato:300,300italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Vollkorn:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
@@ -47,12 +49,11 @@
                 </a>
             </div>
             <div id="primary-nav">
-            <?php
-                 echo public_nav_main();
-            ?>
-           
+                <?php echo public_nav_main();?>                
             </div>
-            
+             <div id="mobile-nav">
+                <?php echo public_nav_main();?>               
+            </div>
             <div id="admin-bar-public">
                  <?php if($user = current_user()) {
                 $links = array(
@@ -77,11 +78,7 @@
             </div>
         </header>         
   
-         <div id="mobile-nav">
-             <?php
-                  echo public_nav_main();
-             ?>
-         </div>
+         
         
 		<?php if ((get_theme_option('Header Image') !== null)): ?>
 		
