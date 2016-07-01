@@ -346,7 +346,7 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
         //libis_start
         // by default contribution is public
         //$linkage->public = $post['contribution-public'];
-        $linkage->public = 0;
+        $linkage->public = 1;
         //libis_end
 
         //libis_start
