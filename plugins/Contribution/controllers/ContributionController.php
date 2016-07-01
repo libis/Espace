@@ -36,7 +36,11 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
                     $contribItem->makeNotPublic();
                 }
                 $contribItem->public = $value;
-                $contribItem->anonymous = $_POST['contribution_anonymous'][$id];
+                //libis_start
+                // disable anonymous contribution
+                //$contribItem->anonymous = $_POST['contribution_anonymous'][$id];
+                $contribItem->anonymous = 0;
+                //libis_end
 
                 if($contribItem->save()) {
                     $this->_helper->flashMessenger( __('Your contributions have been updated.'), 'success');
@@ -333,7 +337,11 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
         $linkage = new ContributionContributedItem;
         $linkage->item_id = $item->id;
         $linkage->public = $post['contribution-public'];
-        $linkage->anonymous = $post['contribution-anonymous'];
+        //libis_start
+        // disable anonymous contribution
+        //$linkage->anonymous = $post['contribution-anonymous'];
+        $linkage->anonymous = 0;
+        //libis_end
         $linkage->save();
     }
 
