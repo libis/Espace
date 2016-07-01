@@ -49,8 +49,8 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
         'simple_vocab_routes',
         'item_citation',
         'item_search_filters',
-        'guest_user_links',
-        'guest_user_widgets',
+/*        'guest_user_links',
+        'guest_user_widgets',*/
         'api_resources',
         'api_import_omeka_adapters'
     );
@@ -661,16 +661,16 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
         return $cite;
     }
 
-    public function filterGuestUserLinks($nav)
+/*    public function filterGuestUserLinks($nav)
     {
         $nav['Contribution'] = array(
             'label' => 'My Contributions',
              'uri' => contribution_contribute_url('my-contributions'),
         );
         return $nav;
-    }
+    }*/
 
-    public function filterGuestUserWidgets($widgets)
+/*    public function filterGuestUserWidgets($widgets)
     {
         $user = current_user();
         $widget = array('label' => __('My Contributions'));
@@ -692,7 +692,7 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
         $widget['content'] = $html;
         $widgets[] = $widget;
         return $widgets;
-    }
+    }*/
 
     private function _adminBaseInfo($args)
     {
