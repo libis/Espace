@@ -230,9 +230,16 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
             	$this->_helper->flashMessenger(__('You must select a type for your contribution.'), 'error');
                 return false;
             }
-            $itemMetadata = array('public'       => false,
+            //libis_start
+            // By default contribution is public
+/*            $itemMetadata = array('public'       => false,
                                   'featured'     => false,
-                                  'item_type_id' => $itemTypeId);
+                                  'item_type_id' => $itemTypeId);*/
+
+            $itemMetadata = array('public'       => true,
+                'featured'     => false,
+                'item_type_id' => $itemTypeId);
+            //libis_end
 
             $collectionId = get_option('contribution_collection_id');
             if (!empty($collectionId) && is_numeric($collectionId)) {
