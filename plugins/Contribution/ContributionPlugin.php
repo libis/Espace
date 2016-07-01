@@ -38,6 +38,8 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
         'items_browse_sql',
         'before_save_item',
         'after_delete_item',
+        'config_form',
+        'config'
     );
 
     /**
@@ -162,6 +164,9 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
             `$db->ContributionContributorField`,
             `$db->ContributionContributorValue`;";
         $this->_db->query($sql);
+
+        /* Remove options from database. */
+        $this->removePluginHideConfiguration();
     }
 
     public function hookUpgrade($args)
@@ -409,6 +414,19 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function filterAdminNavigationMain($nav)
     {
+        /*
+         * If this plugin is configured to be hidden for the current user's role then do not add it to
+         * the navigation links ($navLinks)
+         * */
+        $user = current_user();
+        $currentClass = get_class() ;
+        if(isset($user, $currentClass)){
+            $pluginName = str_replace('plugin', '', strtolower($currentClass));
+            $hide = get_option(strtolower($pluginName.'_'.$user->role.'_hide'));
+            if($hide == 1)
+                return $nav;
+        }
+
         $contributionCount = get_db()->getTable('ContributionContributedItems')->count();
         if ($contributionCount > 0) {
             $uri = url('contribution/items?sort_field=added&sort_dir=d');
@@ -546,6 +564,45 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
             }
         }
     }
+
+    //libis_start
+    /* Define hooks for configuration form to allow show/hid configuration. */
+
+    /**
+     * Display the plugin config form.
+     */
+    public function hookConfigForm()
+    {
+        require dirname(__FILE__) . '/config_form.php';
+    }
+
+    /**
+     * Set the options from the config form input.
+     */
+    public function hookConfig($args)
+    {
+        $post = $args['post'];
+        foreach($post as $option=>$value) {
+            set_option($option, $value);
+        }
+    }
+
+    /**
+     * Remove show/hide plugin configurations.
+     */
+    public function removePluginHideConfiguration(){
+        $userRoles = get_user_roles();
+        $currentClass = get_class() ;
+        if(isset($userRoles, $currentClass)){
+            $pluginName = str_replace('plugin', '', strtolower($currentClass));
+            foreach($userRoles as $role){
+                delete_option(strtolower($pluginName."_".$role."_hide"));
+            }
+        }
+    }
+
+    //libis_end
+
 
     /**
      * Create reasonable default entries for contribution types.
