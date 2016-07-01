@@ -64,11 +64,14 @@ enableContributionAjaxForm(<?php echo js_escape(url($contributionPath.'/type-for
                     <?php echo $this->formCheckbox('contribution-public', $public, null, array('1', '0')); ?>
                     <?php echo $this->formLabel('contribution-public', __('Publish my contribution on the web.')); ?>
                 </div>
-                <div class="inputs">
-                    <?php $anonymous = isset($_POST['contribution-anonymous']) ? $_POST['contribution-anonymous'] : 0; ?>
-                    <?php echo $this->formCheckbox('contribution-anonymous', $anonymous, null, array(1, 0)); ?>
-                    <?php echo $this->formLabel('contribution-anonymous', __("Contribute anonymously.")); ?>
-                </div>
+                <!--libis_start-->
+                <!--Disable anonymous contributions-->
+<!--                <div class="inputs">
+                    <?php /*$anonymous = isset($_POST['contribution-anonymous']) ? $_POST['contribution-anonymous'] : 0; */?>
+                    <?php /*echo $this->formCheckbox('contribution-anonymous', $anonymous, null, array(1, 0)); */?>
+                    <?php /*echo $this->formLabel('contribution-anonymous', __("Contribute anonymously.")); */?>
+                </div>-->
+                <!--libis_end-->
                 <p><?php echo __("In order to contribute, you must read and agree to the %s",  "<a href='" . contribution_contribute_url('terms') . "' target='_blank'>" . __('Terms and Conditions') . ".</a>"); ?></p>
                 <div class="inputs">
                     <?php $agree = isset( $_POST['terms-agree']) ?  $_POST['terms-agree'] : 0 ?>
