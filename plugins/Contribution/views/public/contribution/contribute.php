@@ -61,8 +61,11 @@ enableContributionAjaxForm(<?php echo js_escape(url($contributionPath.'/type-for
                 <?php endif; ?>
                 <div class="inputs">
                     <?php $public = isset($_POST['contribution-public']) ? $_POST['contribution-public'] : 0; ?>
-                    <?php echo $this->formCheckbox('contribution-public', $public, null, array('1', '0')); ?>
-                    <?php echo $this->formLabel('contribution-public', __('Publish my contribution on the web.')); ?>
+                    <!--libis_start-->
+                    <!--by default contribution is public -->
+                    <?php /*echo $this->formCheckbox('contribution-public', $public, null, array('1', '0')); */?>
+                    <?php /*echo $this->formLabel('contribution-public', __('Publish my contribution on the web.')); */?>
+                    <!--libis_end-->
                 </div>
                 <div class="inputs">
                     <?php $anonymous = isset($_POST['contribution-anonymous']) ? $_POST['contribution-anonymous'] : 0; ?>

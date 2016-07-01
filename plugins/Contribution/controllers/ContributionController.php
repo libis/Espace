@@ -343,7 +343,12 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
     {
         $linkage = new ContributionContributedItem;
         $linkage->item_id = $item->id;
-        $linkage->public = $post['contribution-public'];
+        //libis_start
+        // by default contribution is public
+        //$linkage->public = $post['contribution-public'];
+        $linkage->public = 0;
+        //libis_end
+
         //libis_start
         // disable anonymous contribution
         //$linkage->anonymous = $post['contribution-anonymous'];
