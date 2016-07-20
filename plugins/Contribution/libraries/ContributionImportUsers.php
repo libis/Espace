@@ -34,7 +34,10 @@ class ContributionImportUsers extends Omeka_Job_AbstractJob
                     $user->username = $username;
                     $user->name = empty($name) ? "user" : $name;
                     $user->email = $email;
-                    $user->role = "guest";
+		    //libis_start	
+                    //$user->role = "guest";
+		    $user->role = "contributor";
+		    //libis_end
                     $user->active = false;
                     try {
                         $user->save();

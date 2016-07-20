@@ -787,7 +787,10 @@ class ContributionPlugin extends Omeka_Plugin_AbstractPlugin
             $username = str_replace('.', '', $username);
             $user->username = $username;
             $user->active = true;
-            $user->role = 'guest';
+	    //libis_start	
+            //$user->role = 'guest';
+            $user->role = 'contributor';
+	    //libis_end
             $user->setPassword($user->email);
             $user->save();
             $map[$contributor['id']] = $user->id;

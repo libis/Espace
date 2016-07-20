@@ -496,7 +496,10 @@ class Contribution_ContributionController extends Omeka_Controller_AbstractActio
         }
         $user->email = $email;
         $user->name = $name;
-        $user->role = 'guest';
+	//libis_start
+        //$user->role = 'guest';
+        $user->role = 'contributor';
+        //libis_end
         $user->active = 1;
         try {
             $user->save();

@@ -29,7 +29,10 @@ class ApiImport_ResponseAdapter_OmekaNet_ContributorsAdapter extends ApiImport_R
             $this->record->email = $this->responseData['email'];
             $this->record->name = $this->responseData['name'];
             $this->record->username = substr($this->responseData['email'], 0, 30);
-            $this->record->role = 'guest';
+	    //libis_start
+            //$this->record->role = 'guest';
+            $this->record->role = 'contributor';
+            //libis_end
             $this->record->save();
         }
         $this->importUserProfile();
