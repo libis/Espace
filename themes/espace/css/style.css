@@ -8,7 +8,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 /* ==========================================================================
    Styling kept from Berlin v2.2
    ========================================================================== */
-   
+
 /* @group ----- Generic ----- */
 * {
   -moz-box-sizing: border-box;
@@ -221,7 +221,7 @@ header:after {
   max-width: 100%;
   width:50px;
   height: auto;
-  padding:5px;  
+  padding:5px;
   margin-bottom:-5px;
 }
 
@@ -244,7 +244,7 @@ header:after {
     color:#fff;
 }
 
-#browse-stories input[type=text], #browse-stories button { 
+#browse-stories input[type=text], #browse-stories button {
   height: 30px;
 }
 #browse-stories input[type=text] {
@@ -267,7 +267,7 @@ header:after {
 
 button {
   background:none;
-  color: #FFF; 
+  color: #FFF;
   font-style:italic;
   border:2px solid #FFF;
   height: 30px;
@@ -454,7 +454,7 @@ form button {
   display: block;
   padding: 0.25em 18px;
   border-right: 1px solid #fff;
-  background: none;	
+  background: none;
   color: #fff;
   height: 52px;
   line-height: 52px;
@@ -463,10 +463,10 @@ form button {
   text-transform: uppercase;
   font-size:0.8em;
   font-weight:bold;
-  
+
 }
 #primary-nav a:hover, #primary-nav li.active a {
-  
+
 }
 #primary-nav li ul, #primary-nav li ul ul {
   display: none;
@@ -481,7 +481,7 @@ form button {
   color:#fff;
   width:100%;
   min-width:200px;
-  border-top:1px solid #fff;  
+  border-top:1px solid #fff;
 }
 
 #primary-nav li:hover > ul a, #primary-nav li ul li:hover > ul a {
@@ -511,7 +511,7 @@ form button {
 }
 #primary-nav .navigation > li:first-child a
 {
-	
+
 }
 
 #admin-bar-public{
@@ -522,9 +522,9 @@ form button {
 #admin-bar-public a{
     color:#fff;
     padding:5px;
-    font-style:italic;    
+    font-style:italic;
     text-decoration:underline;
-    
+
 }
 
 #admin-bar-public .navigation{
@@ -595,7 +595,7 @@ form button {
 .pagination ul {
   margin-left: 0;
 }
-.pagination li {  
+.pagination li {
   float: left;
   list-style-type: none;
 }
@@ -632,11 +632,11 @@ form button {
 
 .exhibits-browse #browse-stories{
     background:#fff;
-    
+
 }
 
 #search-form-exhibit button, .browse button{
-    border:2px solid #ff4d4d;    
+    border:2px solid #ff4d4d;
     color: #ff4d4d;
     display:inline;
     padding:3px;
@@ -653,17 +653,17 @@ form button {
 
 #home #content {
     width:100%;
-    background: #FF4D4D;    
+    background: #FF4D4D;
     background:url(../images/boats.jpeg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
-        background-size: cover;    
-    padding: 8% 0;
+        background-size: cover;
+    padding: 4% 0;
     color:#fff;
     overflow:hidden;
     margin:0 auto;
-}    
+}
 
 #content:after {
   content: "\0020";
@@ -715,7 +715,7 @@ form button {
 /* @group ----- Home Page ----- */
 
 #home{
-  
+
 }
 
 #header-image-container{
@@ -723,7 +723,7 @@ form button {
     margin:0 auto;
 }
 
-#home #primary{    
+#home #primary{
     float:left;
 }
 
@@ -731,7 +731,7 @@ form button {
   #home #primary {
     margin: 0;
   }
-  
+
   #header-image-container{
     width:100%;
     margin:0 auto;
@@ -752,7 +752,7 @@ form button {
     width: 420px;
   }
 }
-#home #secondary {  
+#home #secondary {
   float: right;
   display: inline;
   margin-left: 10px;
@@ -802,7 +802,7 @@ form button {
     width: 18%;
 }
 
-.gutter-sizer { 
+.gutter-sizer {
     width: 2%;
 }
 
@@ -820,12 +820,12 @@ form button {
   #home #primary {
     margin: 0;
   }
-  
+
   .grid-sizer, .story{
     width: 18%;
   }
 
-  .gutter-sizer { 
+  .gutter-sizer {
     width: 2%;
   }
 }
@@ -833,12 +833,12 @@ form button {
   #home #primary {
     width: 364px;
   }
-  
+
   .grid-sizer, .story{
     width: 31%;
     }
 
-    .gutter-sizer { 
+    .gutter-sizer {
         width: 4%;
     }
 }
@@ -846,12 +846,12 @@ form button {
   #home #primary {
     width: 300px;
   }
-  
+
   .grid-sizer, .story{
     width: 100%;
     }
 
-    .gutter-sizer { 
+    .gutter-sizer {
         width: 2%;
     }
 }
@@ -859,12 +859,12 @@ form button {
   #home #primary {
     width: 420px;
   }
-  
+
   .grid-sizer, .story{
     width: 48%;
     }
 
-    .gutter-sizer { 
+    .gutter-sizer {
         width: 4%;
     }
 }
@@ -877,14 +877,14 @@ form button {
 .story p{
     margin:1em 0;
     text-align: justify;
-   
+
 }
 
 .story .more a{
     border:2px solid #FF4D4D;
     padding:0px 5px;
     color:#FF4D4D;
-    font-family: "Vollkorn",Arial,sans-serif;    
+    font-family: "Vollkorn",Arial,sans-serif;
     font-style: italic;
     font-weight: normal;
     text-align: right;
@@ -912,7 +912,7 @@ form button {
     background:#FF4D4D;
     color:#fff;
     font-size:3em;
-    font-style:italics;  
+    font-style:italics;
     padding:20px;
 }
 
@@ -927,7 +927,7 @@ form button {
 
 .stamp p{
     text-align:center;
-    border:1px dashed #fff;    
+    border:1px dashed #fff;
     margin:0;
     padding:20px;
     line-height:1.2em;
@@ -1124,7 +1124,7 @@ ul.title-list {
 }
 
 .popular a {
-  
+
 }
 
 .v-popular a {
@@ -1187,9 +1187,9 @@ ul.title-list {
     width: 420px;
   }
 }
-.item-img { 
+.item-img {
   margin-right: 20px;
-  float: left; 
+  float: left;
 }
 
 .item-img img{
@@ -1254,7 +1254,7 @@ ul.title-list {
 }
 
 .browse .item-meta > div {
-  float: left;  
+  float: left;
   margin: 0;
 }
 @media only screen and (max-width: 767px) {
@@ -1377,7 +1377,7 @@ ul.title-list {
 .collection .image,
 .exhibit .image {
   display: block;
-  
+
 }
 
 .collection .image img,
@@ -1492,7 +1492,7 @@ ul.title-list {
 
 /* ----- libco/search ----- */
 #libco-search-box{
-    
+
 }
 
 #libco-search-form *::-moz-placeholder {
@@ -1506,16 +1506,16 @@ ul.title-list {
 #libco-search-form ul {
     list-style: none;
     padding:0;
-    margin:0;    
+    margin:0;
     padding-top:5px;
 }
 
-#libco-search-form li { 
-    padding-left: 1em; 
+#libco-search-form li {
+    padding-left: 1em;
     text-indent: -.7em;
 }
 
-#libco-search-form p { 
+#libco-search-form p {
     margin:0;
 }
 
@@ -1525,7 +1525,7 @@ ul.title-list {
 }
 
 #libco-search-form button{
-    background:#ff4d4d;   
+    background:#ff4d4d;
     color:white;
 }
 
@@ -1631,7 +1631,7 @@ ul.title-list {
 .collection-images{
     clear:both;
     overflow:auto;
-    border-top:1px solid #eee;    
+    border-top:1px solid #eee;
     border-bottom:1px solid #eee;
 }
 
@@ -1803,7 +1803,7 @@ footer nav + p {
 }
 
 #exhibit-nav-next .next-page, #exhibit-nav-prev .previous-page{
-    
+
     padding:2px;
 }
 
@@ -1872,7 +1872,7 @@ footer nav + p {
 }
 
 .exhibits.show #exhibit-pages a {
-  
+
 }
 #exhibit-pages ul {
   padding-left: 0;
@@ -1969,7 +1969,7 @@ footer nav + p {
   margin-top: 0.75em;
 }
 
-.exhibit-item-caption{    
+.exhibit-item-caption{
     font-style:italic;
 }
 
@@ -2031,7 +2031,7 @@ footer nav + p {
       border-bottom: 1px solid #fff;
       padding:10px 0;
   }
-  
+
   #admin-bar-public ul{
       float:right;
   }
@@ -2045,7 +2045,7 @@ footer nav + p {
     padding-left: 0;
     margin: 0;
   }
-  
+
   #mobile-nav li {
     text-align: left;
     display: block;
@@ -2126,7 +2126,7 @@ h1, h2, h3
 {
 	color: #FF4D4D;
 	font-size: 18px;
-      
+
 }
 a:link, a:visited
 {
@@ -2149,15 +2149,15 @@ a:hover
 }
 #browse-stories input[type=text]
 {
-	
+
 }
 .view-items-link a:hover, #browse-stories input[type=text]:focus
 {
-	
+
 }
 
 #featured-collection, #featured-exhibit
-{	
+{
 	padding: 20px;
 }
 
@@ -2198,7 +2198,7 @@ footer{
     padding:20px 0px;
     margin-top: 0;
     display:block;
-	
+
 }
 #home footer
 {
@@ -2214,7 +2214,7 @@ footer{
 #footer_images img{
     height:55px;
     padding-right:20px;
-    
+
 }
 
 #footer-content
@@ -2288,7 +2288,7 @@ div#header-image-container h2
 }
 
 div#homepageText{
-	color:#FFF;	
+	color:#FFF;
         font-size:24px;
         font-family:'Vollkorn',sans-serif;
         padding: 20px 20px;
@@ -2299,7 +2299,7 @@ div#homepageText{
 
 div#homepageText p{
     margin: 0;
-    line-height:35px;    
+    line-height:35px;
 }
 
 h2#get_started {
@@ -2320,9 +2320,9 @@ h2#get_started {
 }
 
 #exhibit-pages h4{
-    
+
   background:#FF4D4D;
-  
+
   padding:5px;
 }
 
@@ -2508,7 +2508,7 @@ a#advanced-search
 }
 @media only screen and (max-width: 767px)
 {
-	
+
 	div#header-image-holder .held, div#header-image-holder p
 	{
 		max-width: 100%;
