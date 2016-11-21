@@ -19,9 +19,9 @@ $formAttributes = array(
 
     <?php $searchSources = array("Europeana","DigitalNZ","Mint","Rijksmuseum"); ?>
     <div class="field">
-        <label><?php echo __("Search By"); ?></label>
+        <label><?php //echo __("Search By"); ?></label>
         <div class="inputs">
-            <?php echo $this->formSelect('searchfilter', 'Search By', array('class' => 'existing-element-drop-down'),array('All' => '*', 'title' => 'Title', 'id' => 'Id'), array()); ?>
+            <?php echo //$this->formSelect('searchfilter', 'Search By', array('class' => 'existing-element-drop-down'),array('All' => '*', 'title' => 'Title', 'id' => 'Id'), array()); ?>
         </div>
     </div>
 
