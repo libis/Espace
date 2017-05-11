@@ -2,6 +2,8 @@
 /**
  * User: NaeemM
  */
+require_once LIBCO_DIR."/helpers/ImportRecord.php";
+
 
 class Libco_LibcoController extends Omeka_Controller_AbstractActionController{
 
@@ -11,8 +13,9 @@ class Libco_LibcoController extends Omeka_Controller_AbstractActionController{
     public function searchAction()
     {
         $searchQuery = $this->getParam('q');
-        if(empty($searchQuery))
+        if(empty($searchQuery)){
             return;
+        }
 
         $parameters = $this->getAllParams();
         $sources = array();
@@ -25,22 +28,22 @@ class Libco_LibcoController extends Omeka_Controller_AbstractActionController{
         if(sizeof($sources)){
             $libcoService = new LibcoService();
             $result = $libcoService->search($searchQuery, $sources, $this->getCurrentPage());
-            if(!empty($result)){
-                // 'api/advancedsearch'
-                if(empty($result['responses'])){
-                    $this->_helper->flashMessenger('Search result not returned from the server.',  'error');
-                    return;
-                }
-                $result = $result['responses'];
-                $result = $libcoService->normalizeResult($result, $searchQuery);
-
-                if ($result['totalResults']) {
+            if(isset($result['results'])){
+                $result = $libcoService->normalizeResult($result['results'], $searchQuery);
+                if ($result['highestTotalRecords']) {
                     Zend_Registry::set('pagination', array(
                         'page' => $this->getCurrentPage(),
                         'per_page' => 100,
-                        'total_results' => $result['totalResults']
+                        'total_results' => $result['highestTotalRecords']
                     ));}
                 $this->view->assign($result);
+            }
+            elseif(isset($result['error'])){
+                $this->_helper->flashMessenger('Error:'. $result['error'] ,  'error');
+            }
+            else{
+                $this->_helper->flashMessenger('Search result not returned from the server.',  'error');
+                return;
             }
         }
         else
@@ -50,13 +53,11 @@ class Libco_LibcoController extends Omeka_Controller_AbstractActionController{
     private function getCurrentPage()
     {
         static $currentPage;
-
         if (!isset($currentPage)) {
             $currentPage = (int) $this->getParam('page');
             $currentPage = ($currentPage > 0) ? $currentPage : 1;
         }
-
         return $currentPage;
     }
-    
+
 }

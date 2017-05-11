@@ -29,6 +29,11 @@ class LibcoService {
                 $reqType = "POST";
                 break;
 
+            case 'searchsources':
+                $endPoint = "api/searchsources";
+                $reqType = "GET";
+                break;
+
             case 'collection':
                 break;
 
@@ -43,19 +48,18 @@ class LibcoService {
 
 
     public function search($qParameters, $sources, $page){
-
-        //$filters = array(array('filterID' => 'year', 'values' => array('1966','1966')));
-        $filters = array();
+        $filters = array(array(
+            array('fieldId' => "anywhere", 'value' =>$qParameters, "exact" => false),
+            array('fieldId' => "resourceType", 'value' =>"CulturalObject", 'exact' => true)
+        ));
         $reqBody = array(
-            "searchTerm" => $qParameters,
+            "filters" => $filters,
             "page" => $page,
-            "pageSize" => 100,
-            "source" => $sources,
-            "filters" => $filters
+            "pageSize" => 10,
+            "sources" => $sources
         );
         $response = $this->makeRequest("general", $reqBody);
         $response = json_decode($response, true);
-
         return $response;
     }
 
@@ -63,6 +67,7 @@ class LibcoService {
         $errorMessage = "";
         $numberofRecords = 0;
         $sourceResult = array();
+        $highestTotal = 0;
 
         if(array_key_exists('error', $result) && strlen($result['error']) > 0)
         {
@@ -71,16 +76,34 @@ class LibcoService {
         else
         {
             foreach($result as $searchItem){
+                if($searchItem['totalCount'] < 1)
+                    continue;
+
                 $sourceResult[$searchItem['source']] = $searchItem['items'];
-                $numberofRecords += sizeof($searchItem['items']);
+                $numberofRecords += $searchItem['totalCount'];
+                if($searchItem['totalCount'] > $highestTotal)
+                    $highestTotal = $searchItem['totalCount'];
             }
             arsort($sourceResult);
         }
+
+        //STATUS:
+        /*
+         * paging is working fine now but there are few issues from espace api side:
+         * searches on Europeana source returns different totalCount which makes paging results inconsistent for this source.
+         * Search on Rijksmuseum return different totalCount and number of items.
+         *
+         * Paging is calculated by summing up all totalCounts (which should remain consistent for all pages) and dividing
+         * it by page size (which is 100 in this example. For instance, if Europeana, DigitalNZ, Mint, Rijksmuseum have
+         * 306, 1145454, 45000 and 789546 totalCount subsequently, then, page size will be calculated based on the maximum totalCount
+         * value which is 1145454 (of DigitalNZ). That is 1145454/100 or 11454,54, giving 11455 pages of size 100.
+         * */
         $result = array(
             'query' => $qParameters,
             'records' => $sourceResult,
             'totalResults' => $numberofRecords,
             'error' => $errorMessage,
+            'highestTotalRecords' => $highestTotal
         );
         return $result;
     }
@@ -151,7 +174,6 @@ class LibcoService {
         $httpClient->setHeaders('Content-Type', 'application/json');
         $httpClient->setRawData(json_encode($requestBody));
         $response = $httpClient->request($request['type']);
-
         if($response->getStatus() === 200)
             return $response->getBody();
         else
@@ -176,6 +198,30 @@ class LibcoService {
         return $requestBody;
     }
 
+    public function getSearchSources(){
+        $request = $this->prepareUrl("searchsources");
+        if(empty($request['url']) || empty($request['type'])){
+            return json_encode(array('error' => 'Error in preparing http request.'));
+        }
+
+        $requestConfig = array(
+            'adapter'    => 'Zend_Http_Client_Adapter_Proxy',
+            'proxy_host' => get_option('libco_server_proxy'),
+            'timeout' => 900
+        );
+
+        $restClient = new Zend_Rest_Client();
+        $httpClient = $restClient->getHttpClient();
+        $httpClient->resetParameters();
+        $httpClient->setUri($request['url']);
+        $httpClient->setConfig($requestConfig);
+        $httpClient->setHeaders('Content-Type', 'application/json');
+        $response = $httpClient->request($request['type']);
+        if($response->getStatus() === 200){
+            $resp = json_decode($response->getBody());
+            return $resp;
+        }
+    }
 
     /**
      * Prepare and throw exception.
